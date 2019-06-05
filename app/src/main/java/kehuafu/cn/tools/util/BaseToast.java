@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.content.Context;
 import android.view.Gravity;
 import android.view.View;
+import android.view.Window;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,6 +21,7 @@ public class BaseToast {
     private static Context context;
     private static Toast toast;
     private static TextView tip_tv;
+    private static LinearLayout tip_ll;
 
     public BaseToast(Context context){
         BaseToast.context = context;
@@ -38,7 +41,7 @@ public class BaseToast {
             }
         }
     }
-    private static void show(Activity activity,String msg, int time){
+    private static void show(View view,String msg, int time){
         if (context==null){
             try {
                 throw new Exception("Context did'nt init");
@@ -46,13 +49,15 @@ public class BaseToast {
                 e.printStackTrace();
             }
         }
-        if (activity!=null){
-            View view  = activity.getLayoutInflater().inflate(R.layout.toast_tip,null);
+        if (view!=null){
             tip_tv = view.findViewById(R.id.toast_tip);
+            tip_ll = view.findViewById(R.id.tip_ll);
+            tip_ll.setAlpha(0.8f);
             tip_tv.setText(msg);
             toast.setView(view);
-            toast.setDuration(time);
             toast.setGravity(Gravity.BOTTOM,0,200);
+            toast.setDuration(time);
+            toast.show();
         }else {
             toast.setText(msg);
             toast.setDuration(time);
@@ -63,14 +68,14 @@ public class BaseToast {
 
     /**
      * 暴露方法
-     * @param activity
+     * @param view
      * @param msg
      */
-    public static void showShort(Activity activity,String msg){
-        show(activity,msg,Toast.LENGTH_SHORT);
+    public static void showShort(View view,String msg){
+        show(view,msg,Toast.LENGTH_SHORT);
     }
-    public static void showLong(Activity activity,String msg){
-        show(activity,msg,Toast.LENGTH_LONG);
+    public static void showLong(View view,String msg){
+        show(view,msg,Toast.LENGTH_LONG);
     }
     public static void cancel(){
         toast.cancel();
