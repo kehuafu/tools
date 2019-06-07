@@ -1,4 +1,4 @@
-package khf.edu.mytools.module.adapter;
+package khf.edu.mytools.module.bean;
 
 import java.io.Serializable;
 import java.util.List;
@@ -12,9 +12,10 @@ public class SchoolBeanShell implements Serializable {
      */
 
     private int id;
-    private String name;
-//    private LatLng mLatLng;
+
     private List<SchoolBean> school;
+
+    private String name;
 
     public int getId() {
         return id;
@@ -40,23 +41,21 @@ public class SchoolBeanShell implements Serializable {
         this.school = school;
     }
 
-//    public LatLng getLatLng() {
-//        return mLatLng;
-//    }
-//
-//    public void setLatLng(LatLng latLng) {
-//        mLatLng = latLng;
-//    }
+
 
     public static class SchoolBean implements Serializable{
         /**
          * id : 1001
          * name : 清华大学
          */
-//        private LatLng mLatLng;
         private int id;
         private String name;
+        private int color;
 
+        public SchoolBean(String name,int color){
+           this.name = name;
+           this.color =color;
+        }
         public int getId() {
             return id;
         }
@@ -73,12 +72,12 @@ public class SchoolBeanShell implements Serializable {
             this.name = name;
         }
 
-//        public LatLng getLatLng() {
-//            return mLatLng;
-//        }
-//
-//        public void setLatLng(LatLng latLng) {
-//            mLatLng = latLng;
-//        }
+        public int getColor() {
+            return color;
+        }
+
+        public void setColor(int color) {
+            this.color = color;
+        }
     }
 }

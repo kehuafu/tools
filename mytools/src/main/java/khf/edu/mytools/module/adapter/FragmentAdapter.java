@@ -3,8 +3,11 @@ package khf.edu.mytools.module.adapter;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.util.Log;
 
 import java.util.List;
+
+import khf.edu.mytools.module.fragment.MyFragment;
 
 /**
  * DialogFragment的适配器
@@ -12,14 +15,18 @@ import java.util.List;
  */
 public class FragmentAdapter extends FragmentPagerAdapter {
 
-    private List<Fragment> list;
-    public FragmentAdapter(FragmentManager fm,List<Fragment> fragmentList) {
+    private List<MyFragment> list;
+
+    public FragmentAdapter(FragmentManager fm){
+        super(fm);
+    }
+    public FragmentAdapter(FragmentManager fm,List<MyFragment> fragmentList) {
         super(fm);
         this.list = fragmentList;
     }
 
     @Override
-    public Fragment getItem(int i) {
+    public MyFragment getItem(int i) {
         return list.get(i);
     }
 

@@ -378,16 +378,6 @@
             android:background="#ebebeb">
 
             <TextView
-                android:id="@+id/week_tv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:text="周二"
-                android:textColor="#a9a9a9"
-                android:textSize="16sp"
-                android:visibility="gone" />
-
-            <TextView
                 android:id="@+id/course_time_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -407,78 +397,6 @@
                 android:text="全选"
                 android:textColor="@color/colorDefault"
                 android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/select_all_tv0"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="15dp"
-                android:text="全选"
-                android:textColor="@color/colorDefault"
-                android:textSize="16sp"
-                android:visibility="gone" />
-
-            <TextView
-                android:id="@+id/select_all_tv1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="15dp"
-                android:text="全选"
-                android:textColor="@color/colorDefault"
-                android:textSize="16sp"
-                android:visibility="gone" />
-
-            <TextView
-                android:id="@+id/select_all_tv2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="15dp"
-                android:text="全选"
-                android:textColor="@color/colorDefault"
-                android:textSize="16sp"
-                android:visibility="gone" />
-
-            <TextView
-                android:id="@+id/select_all_tv3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="15dp"
-                android:text="全选"
-                android:textColor="@color/colorDefault"
-                android:textSize="16sp"
-                android:visibility="gone" />
-
-            <TextView
-                android:id="@+id/select_all_tv4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="15dp"
-                android:text="全选"
-                android:textColor="@color/colorDefault"
-                android:textSize="16sp"
-                android:visibility="gone" />
-
-            <TextView
-                android:id="@+id/select_all_tv5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="15dp"
-                android:text="全选"
-                android:textColor="@color/colorDefault"
-                android:textSize="16sp"
-                android:visibility="gone" />
 
         </RelativeLayout>
 

@@ -10,15 +10,18 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import kehuafu.cn.tools.util.BaseToast;
 import khf.edu.mytools.R;
 import khf.edu.mytools.module.adapter.FragmentAdapter;
 import khf.edu.mytools.module.fragment.MyFragment;
@@ -29,23 +32,40 @@ public class FragmentDialog extends DialogFragment {
     private Context context;
     private View view;
     private FragmentAdapter fragmentAdapter;
-    private List<Fragment> list;
+    private List<MyFragment> list;
     private ViewPager viewPager;
+    private TextView select_all_tv;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         context = this.getActivity();
         view = inflater.inflate(R.layout.dialog_layout, container, false);
         viewPager = view.findViewById(R.id.my_vp);
+        initView();
         list= new ArrayList<>();
-        for (int i=0;i<3;i++){
-            list.add(new MyFragment());
+        for (int i=0;i<5;i++){
+            list.add(new MyFragment(i));
         }
         fragmentAdapter = new FragmentAdapter(getChildFragmentManager(),list);
         viewPager.setAdapter(fragmentAdapter);
-        viewPager.setOffscreenPageLimit(3);
+        viewPager.setOffscreenPageLimit(5);
         viewPager.setCurrentItem(0);
         return view;
+    }
+
+    private void initView() {
+        select_all_tv = view.findViewById(R.id.select_all_tv);
+        select_all_tv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                View view = getLayoutInflater().inflate(R.layout.list_item,null);
+                TextView textView = view.findViewById(R.id.name_tv);
+                textView.setTextColor(Color.parseColor("#1195f4"));
+                MyFragment myFragment=fragmentAdapter.getItem(0);
+                myFragment.reFlashUi();
+            }
+        });
     }
 
     /**
