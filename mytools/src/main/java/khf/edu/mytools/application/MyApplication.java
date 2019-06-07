@@ -1,4 +1,4 @@
-package khf.edu.mytools;
+package khf.edu.mytools.application;
 
 import android.app.Application;
 import android.content.Context;
