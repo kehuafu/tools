@@ -17,7 +17,9 @@ import android.view.WindowManager;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+
 import khf.edu.mytools.R;
 import khf.edu.mytools.module.adapter.FragmentAdapter;
 import khf.edu.mytools.module.bean.LeaveBeanShell;
@@ -34,17 +36,21 @@ public class FragmentDialog extends DialogFragment implements MyFragment.AllClic
     private TextView select_all_tv;
     private List<LeaveBeanShell> shells;//存储课程数据信息
     public static int flag_fragment = 0;//当前fragment的位置
-    private  MyFragment myFragment;
+    private MyFragment myFragment;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.dialog_layout, container, false);
         initView();
         initListener();
-        shells = new ArrayList<>();
-        list = new ArrayList<>();
+        Bundle bundle = getArguments();
+        if (bundle != null) {
+            shells = (List<LeaveBeanShell>) bundle.getSerializable("shells");
+            list = (List<MyFragment>) bundle.getSerializable("list");
+        }
         for (int i = 0; i < 6; i++) {
-            list.add(new MyFragment(shells, context, i, this));
+            list.set(i,new MyFragment(shells, context, i, this));
         }
         fragmentAdapter = new FragmentAdapter(getChildFragmentManager(), list);
         viewPager.setAdapter(fragmentAdapter);
@@ -53,6 +59,7 @@ public class FragmentDialog extends DialogFragment implements MyFragment.AllClic
         myFragment = fragmentAdapter.getItem(0);
         return view;
     }
+
     /**
      * 初始化控件
      */
@@ -64,7 +71,6 @@ public class FragmentDialog extends DialogFragment implements MyFragment.AllClic
 
     /**
      * 监听
-     *
      */
     private void initListener() {
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -95,6 +101,7 @@ public class FragmentDialog extends DialogFragment implements MyFragment.AllClic
             }
         });
     }
+
     /**
      * 初始化Dialog的样式
      */
@@ -138,7 +145,7 @@ public class FragmentDialog extends DialogFragment implements MyFragment.AllClic
     /**
      * 设置数据
      */
-    public void setData(){
+    public void setData() {
 
     }
 
@@ -148,22 +155,22 @@ public class FragmentDialog extends DialogFragment implements MyFragment.AllClic
     private void updateAllSelectedUI(int i) {
         switch (i) {
             case 0:
-                myFragment.reFreshUi(-2,i);
+                myFragment.reFreshUi(-2, i);
                 break;
             case 1:
-                myFragment.reFreshUi(-2,i);
+                myFragment.reFreshUi(-2, i);
                 break;
             case 2:
-                myFragment.reFreshUi(-2,i);
+                myFragment.reFreshUi(-2, i);
                 break;
             case 3:
-                myFragment.reFreshUi(-2,i);
+                myFragment.reFreshUi(-2, i);
                 break;
             case 4:
-                myFragment.reFreshUi(-2,i);
+                myFragment.reFreshUi(-2, i);
                 break;
             case 5:
-                myFragment.reFreshUi(-2,i);
+                myFragment.reFreshUi(-2, i);
                 break;
         }
     }

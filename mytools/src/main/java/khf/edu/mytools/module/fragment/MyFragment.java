@@ -59,7 +59,7 @@ public class MyFragment extends Fragment implements ListView.OnItemClickListener
      * 设置数据
      */
     private void setData() {
-        int color = getResources().getColor(R.color.textColor);
+        int color = context.getResources().getColor(R.color.textColor);
         switch (position) {
             case 0:
                 for (int i = 0; i < 1; i++) {
@@ -105,7 +105,7 @@ public class MyFragment extends Fragment implements ListView.OnItemClickListener
      *
      * @param mData
      */
-    private void showList(List<LeaveBeanShell.CourseBean> mData) {
+    public void showList(List<LeaveBeanShell.CourseBean> mData) {
         if (schoolAdapter == null) {
             listView = view.findViewById(R.id.list_lv);
             schoolAdapter = new LeaveAdapter((LinkedList<LeaveBeanShell.CourseBean>) mData, context);
@@ -121,8 +121,10 @@ public class MyFragment extends Fragment implements ListView.OnItemClickListener
      * 刷新ListView的UI
      */
     public void reFreshUi(int position, int flag_fragment) {
-        int color = getResources().getColor(R.color.colorDefault);//已选择的颜色
-        int color_normal = getResources().getColor(R.color.textColor);//正常颜色
+        int color = context.getResources().getColor(R.color.colorDefault);//已选择的颜色
+        int color_normal = context.getResources().getColor(R.color.textColor);//正常颜色
+        //mData = shells.get(flag_fragment).getCourse();
+        mData=shells.get(flag_fragment).getCourse();
         if (position >= 0) {//点击listView中的item时的变化
             if (!mData.get(position).isChecked()) {
                 mData.get(position).setChecked(true);
@@ -169,6 +171,7 @@ public class MyFragment extends Fragment implements ListView.OnItemClickListener
             } else {
                 allClick.AllClick(true);
             }
+            showList(mData);
         }
     }
 
