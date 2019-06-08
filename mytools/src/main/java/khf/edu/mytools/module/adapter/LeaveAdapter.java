@@ -1,40 +1,36 @@
 package khf.edu.mytools.module.adapter;
 
 import android.content.Context;
-import android.graphics.Color;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.CheckBox;
 import android.widget.TextView;
-
 import java.util.LinkedList;
-
 import khf.edu.mytools.R;
-import khf.edu.mytools.module.bean.SchoolBeanShell;
+import khf.edu.mytools.module.bean.LeaveBeanShell;
 
-public class SchoolAdapter extends BaseAdapter {
+public class LeaveAdapter extends BaseAdapter {
 
-    private LinkedList<SchoolBeanShell.SchoolBean> mData;
+    private LinkedList<LeaveBeanShell.CourseBean> mData;
     private Context context;
     private View view;
     private ViewHolder holder;
     private int i=0;
 
-    public SchoolAdapter(){
+    public LeaveAdapter(){
         super();
     }
-    public SchoolAdapter(LinkedList<SchoolBeanShell.SchoolBean>mData ,Context context){
+    public LeaveAdapter(LinkedList<LeaveBeanShell.CourseBean>mData , Context context){
         this.context = context;
         this.mData = mData;
 
     }
-
     /**
      * 刷新ListView的UI界面
      */
-    public void onDataChange(LinkedList<SchoolBeanShell.SchoolBean> mData){
+    public void onRefresh(LinkedList<LeaveBeanShell.CourseBean> mData){
         this.mData = mData;
         notifyDataSetChanged();
     }
@@ -59,17 +55,23 @@ public class SchoolAdapter extends BaseAdapter {
         if (convertView==null){
             convertView=LayoutInflater.from(context).inflate(R.layout.list_item,null);
             holder = new ViewHolder();
-            holder.name_tv = convertView.findViewById(R.id.name_tv);
+            holder.sectionTime_tv = convertView.findViewById(R.id.sectionTime_tv);
+            holder.selected_cb = convertView.findViewById(R.id.selected_iv);
+            holder.online_courseName_tv = convertView.findViewById(R.id.online_courseName_tv);
             convertView.setTag(holder);//将holder存储到convertView
         }else {
             holder = (ViewHolder) convertView.getTag();
         }
-        holder.name_tv.setText(mData.get(position).getName());
-        holder.name_tv.setTextColor(mData.get(position).getColor());
+        holder.sectionTime_tv.setText(mData.get(position).getSectionTime());
+        holder.selected_cb.setChecked(mData.get(position).isChecked());
+        holder.online_courseName_tv.setText(mData.get(position).getName());
+        holder.online_courseName_tv.setTextColor(mData.get(position).getColor());
         view = convertView;
         return view;
     }
     class ViewHolder{
-        TextView name_tv;
+        TextView sectionTime_tv;
+        CheckBox selected_cb;
+        TextView online_courseName_tv;
     }
 }

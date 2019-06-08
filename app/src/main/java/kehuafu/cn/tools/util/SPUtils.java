@@ -1,8 +1,8 @@
 package kehuafu.cn.tools.util;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
+
 
 /**
  * 对 SharedPreferences 的简单封装
@@ -224,4 +224,5 @@ public class SPUtils {
         sp = context.getSharedPreferences(fileName,Context.MODE_PRIVATE);
         sp.edit().remove(key).apply();
     }
+
 }
