@@ -22,6 +22,7 @@ public class LeaveAdapter extends BaseAdapter {
     public LeaveAdapter(){
         super();
     }
+
     public LeaveAdapter(LinkedList<LeaveBeanShell.CourseBean>mData , Context context){
         this.context = context;
         this.mData = mData;

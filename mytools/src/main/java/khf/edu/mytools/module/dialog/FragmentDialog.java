@@ -9,14 +9,17 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
+import android.util.SparseArray;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import java.util.ArrayList;
+import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -37,6 +40,8 @@ public class FragmentDialog extends DialogFragment implements MyFragment.AllClic
     private List<LeaveBeanShell> shells;//存储课程数据信息
     public static int flag_fragment = 0;//当前fragment的位置
     private MyFragment myFragment;
+    private SparseArray<View> viewSparseArray;
+
 
     @Nullable
     @Override
@@ -45,21 +50,30 @@ public class FragmentDialog extends DialogFragment implements MyFragment.AllClic
         initView();
         initListener();
         Bundle bundle = getArguments();
-        if (bundle != null) {
+        if (bundle!=null){
             shells = (List<LeaveBeanShell>) bundle.getSerializable("shells");
-            list = (List<MyFragment>) bundle.getSerializable("list");
         }
-        for (int i = 0; i < 6; i++) {
-            list.set(i,new MyFragment(shells, context, i, this));
+        if (list == null) {
+            list = new LinkedList<>();
+            for (int i = 0; i < 6; i++) {
+                list.add(new MyFragment(shells, context, i, this));
+            }
+            Toast.makeText(context,"null:"+shells.size(),Toast.LENGTH_SHORT).show();
+        }else {
+            list.clear();
+            list = new LinkedList<>();
+            for (int i = 0; i < 6; i++) {
+                list.add(new MyFragment(shells, context, i, this));
+            }
+            Toast.makeText(context,"NotNull:"+shells.size(),Toast.LENGTH_SHORT).show();
         }
         fragmentAdapter = new FragmentAdapter(getChildFragmentManager(), list);
-        viewPager.setAdapter(fragmentAdapter);
-        viewPager.setOffscreenPageLimit(5);
-        viewPager.setCurrentItem(0);
         myFragment = fragmentAdapter.getItem(0);
+        viewPager.setAdapter(fragmentAdapter);
+        viewPager.setOffscreenPageLimit(6);
+        viewPager.setCurrentItem(0);
         return view;
     }
-
     /**
      * 初始化控件
      */
@@ -67,6 +81,9 @@ public class FragmentDialog extends DialogFragment implements MyFragment.AllClic
         context = this.getActivity();
         viewPager = view.findViewById(R.id.my_vp);
         select_all_tv = view.findViewById(R.id.select_all_tv);
+        if (viewSparseArray==null){
+            viewSparseArray = new SparseArray<>();
+        }
     }
 
     /**
@@ -127,7 +144,6 @@ public class FragmentDialog extends DialogFragment implements MyFragment.AllClic
             this.getDialog().setCanceledOnTouchOutside(true);//外部不可点击
         }
     }
-
     /**
      * 全选的UI更新
      *
@@ -140,13 +156,6 @@ public class FragmentDialog extends DialogFragment implements MyFragment.AllClic
         } else {
             select_all_tv.setText("全选");
         }
-    }
-
-    /**
-     * 设置数据
-     */
-    public void setData() {
-
     }
 
     /**
@@ -175,4 +184,10 @@ public class FragmentDialog extends DialogFragment implements MyFragment.AllClic
         }
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        shells.clear();
+        dismiss();
+    }
 }

@@ -6,18 +6,20 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
+import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-import kehuafu.cn.tools.util.BaseToast;
+import kehuafu.cn.tools.util.SPUtils;
 import khf.edu.mytools.R;
 import khf.edu.mytools.module.adapter.LeaveAdapter;
 import khf.edu.mytools.module.bean.LeaveBeanShell;
@@ -28,7 +30,8 @@ public class MyFragment extends Fragment implements ListView.OnItemClickListener
     private Context context;
     private View view;
     private List<LeaveBeanShell> shells;
-    private List<LeaveBeanShell.CourseBean> mData = new LinkedList<>();
+    private LeaveBeanShell shell ;
+    private List<LeaveBeanShell.CourseBean> mData = new LinkedList<>();//模拟数据
     private LeaveAdapter schoolAdapter = null;
     private ListView listView;
     private int position;//Fragment的位置
@@ -51,12 +54,12 @@ public class MyFragment extends Fragment implements ListView.OnItemClickListener
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment, container, false);
         setData();
-        showList(mData);
+        showList(shells.get(position).getCourse());
         return view;
     }
 
     /**
-     * 设置数据
+     * 模拟：设置数据
      */
     private void setData() {
         int color = context.getResources().getColor(R.color.textColor);
@@ -65,39 +68,52 @@ public class MyFragment extends Fragment implements ListView.OnItemClickListener
                 for (int i = 0; i < 1; i++) {
                     mData.add(new LeaveBeanShell.CourseBean("java EE框架应用开发" + i, color, false));
                 }
-                shells.add(new LeaveBeanShell(mData, false));
+                if (shells.size()<6) {
+                    shells.add(new LeaveBeanShell(mData, false));
+                }
                 break;
             case 1:
                 for (int i = 0; i < 2; i++) {
                     mData.add(new LeaveBeanShell.CourseBean("java EE框架应用开发" + i, color, false));
                 }
-                shells.add(new LeaveBeanShell(mData, false));
+                if (shells.size()<6) {
+                    shells.add(new LeaveBeanShell(mData, false));
+                }
                 break;
             case 2:
                 for (int i = 0; i < 3; i++) {
                     mData.add(new LeaveBeanShell.CourseBean("java EE框架应用开发" + i, color, false));
                 }
-                shells.add(new LeaveBeanShell(mData, false));
+                if (shells.size()<6) {
+                    shells.add(new LeaveBeanShell(mData, false));
+                }
                 break;
             case 3:
                 for (int i = 0; i < 4; i++) {
                     mData.add(new LeaveBeanShell.CourseBean("java EE框架应用开发" + i, color, false));
                 }
-                shells.add(new LeaveBeanShell(mData, false));
+                if (shells.size()<6) {
+                    shells.add(new LeaveBeanShell(mData, false));
+                }
                 break;
             case 4:
                 for (int i = 0; i < 5; i++) {
                     mData.add(new LeaveBeanShell.CourseBean("java EE框架应用开发" + i, color, false));
                 }
-                shells.add(new LeaveBeanShell(mData, false));
+                if (shells.size()<6) {
+                    shells.add(new LeaveBeanShell(mData, false));
+                }
                 break;
             case 5:
                 for (int i = 0; i < 6; i++) {
                     mData.add(new LeaveBeanShell.CourseBean("java EE框架应用开发" + i, color, false));
                 }
-                shells.add(new LeaveBeanShell(mData, false));
+                if (shells.size()<6) {
+                    shells.add(new LeaveBeanShell(mData, false));
+                }
                 break;
         }
+        shell = new LeaveBeanShell(mData, false);
     }
 
     /**
@@ -130,21 +146,25 @@ public class MyFragment extends Fragment implements ListView.OnItemClickListener
                 mData.get(position).setChecked(true);
                 mData.get(position).setColor(color);
                 showList(mData);
-                shells.set(flag_fragment, new LeaveBeanShell(mData, false));
+                shell.setAllcheck(false);
+                shells.set(flag_fragment, shell);
             } else if (mData.get(position).isChecked()) {
                 mData.get(position).setChecked(false);
                 mData.get(position).setColor(color_normal);
                 showList(mData);
-                shells.set(flag_fragment, new LeaveBeanShell(mData, false));
+                shell.setAllcheck(false);
+                shells.set(flag_fragment, shell);
             }
             for (int j = 0; j < mData.size(); j++) {
                 if (!mData.get(j).isChecked()) {
                     allClick.AllClick(false);
-                    shells.set(flag_fragment, new LeaveBeanShell(mData, false));
+                    shell.setAllcheck(false);
+                    shells.set(flag_fragment, shell);
                     return;
                 } else {
                     allClick.AllClick(true);
-                    shells.set(flag_fragment, new LeaveBeanShell(mData, true));
+                    shell.setAllcheck(true);
+                    shells.set(flag_fragment,shell);
                 }
             }
         } else if (position == -1) {//点击全选时的变化
@@ -155,14 +175,16 @@ public class MyFragment extends Fragment implements ListView.OnItemClickListener
                     mData.get(i).setColor(color);
                     showList(mData);
                 }
-                shells.set(flag_fragment, new LeaveBeanShell(mData, true));
+                shell.setAllcheck(true);
+                shells.set(flag_fragment, shell);
             } else {
                 for (int i = 0; i < mData.size(); i++) {
                     mData.get(i).setChecked(false);
                     allClick.AllClick(false);
                     mData.get(i).setColor(color_normal);
                     showList(mData);
-                    shells.set(flag_fragment, new LeaveBeanShell(mData, false));
+                    shell.setAllcheck(false);
+                    shells.set(flag_fragment, shell);
                 }
             }
         } else {//滑动fragment时的变化
@@ -171,7 +193,7 @@ public class MyFragment extends Fragment implements ListView.OnItemClickListener
             } else {
                 allClick.AllClick(true);
             }
-            showList(mData);
+            showList(shells.get(flag_fragment).getCourse());
         }
     }
 
@@ -193,5 +215,10 @@ public class MyFragment extends Fragment implements ListView.OnItemClickListener
      */
     public interface AllClick {
         void AllClick(boolean allclick);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
     }
 }
