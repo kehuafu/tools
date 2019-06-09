@@ -161,193 +161,23 @@
                 android:layout_centerInParent="true" />
         </RelativeLayout>
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_centerHorizontal="true"
+            android:orientation="horizontal"
             android:layout_marginLeft="48dp"
             android:layout_marginRight="48dp">
 
-            <RelativeLayout
-                android:id="@+id/date0_rl"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:layout_centerVertical="true"
-                android:alpha="0.9"
-                android:background="@drawable/online_date_bg">
-
-                <TextView
-                    android:id="@+id/date0_tv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:text="08"
-                    android:textColor="#ffffff"
-                    android:textSize="16sp"
-                    tools:ignore="HardcodedText" />
-
-                <TextView
-                    android:id="@+id/week_tv0"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/date0_tv"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="-2dp"
-                    android:text="周四"
-                    android:textColor="#ffffff"
-                    android:textSize="9sp"
-                    tools:ignore="HardcodedText" />
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:id="@+id/left_rl"
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/date_rv"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_centerHorizontal="true"
-                android:layout_marginLeft="30dp"
-                android:layout_toLeftOf="@id/date2_rl">
+                android:layout_height="wrap_content"
+                android:overScrollMode="never"
+                android:scrollbars="none"
+                tools:listitem="@layout/list_item_date"/>
 
-                <RelativeLayout
-                    android:id="@+id/date1_rl"
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
-                    android:layout_centerInParent="true"
-                    android:alpha="0.9"
-                    android:gravity="center">
-
-                    <TextView
-                        android:id="@+id/date1_tv"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerHorizontal="true"
-                        android:text="09"
-                        android:textColor="#292727"
-                        android:textSize="16sp"
-                        tools:ignore="HardcodedText" />
-
-                    <TextView
-                        android:id="@+id/week_tv1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/date1_tv"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginTop="-2dp"
-                        android:text="周四"
-                        android:textColor="#a9a9a9"
-                        android:textSize="9sp"
-                        tools:ignore="HardcodedText" />
-                </RelativeLayout>
-
-            </RelativeLayout>
-
-
-            <RelativeLayout
-                android:id="@+id/date2_rl"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:layout_centerInParent="true"
-                android:alpha="0.9"
-                android:gravity="center">
-
-                <TextView
-                    android:id="@+id/date2_tv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:text="10"
-                    android:textColor="#292727"
-                    android:textSize="16sp"
-                    tools:ignore="HardcodedText" />
-
-                <TextView
-                    android:id="@+id/week_tv2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/date2_tv"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="-2dp"
-                    android:text="周四"
-                    android:textColor="#a9a9a9"
-                    android:textSize="9sp"
-                    tools:ignore="HardcodedText" />
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:id="@+id/right_rl"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_centerHorizontal="true"
-                android:layout_marginEnd="30dp"
-                android:layout_marginRight="30dp"
-                android:layout_toEndOf="@+id/date2_rl"
-                android:layout_toRightOf="@+id/date2_rl">
-
-                <RelativeLayout
-                    android:id="@+id/date3_rl"
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
-                    android:layout_centerInParent="true"
-                    android:alpha="0.9"
-                    android:gravity="center">
-
-                    <TextView
-                        android:id="@+id/date3_tv"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerHorizontal="true"
-                        android:text="11"
-                        android:textColor="#292727"
-                        android:textSize="16sp"
-                        tools:ignore="HardcodedText" />
-
-                    <TextView
-                        android:id="@+id/week_tv3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/date3_tv"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginTop="-2dp"
-                        android:text="周四"
-                        android:textColor="#a9a9a9"
-                        android:textSize="9sp"
-                        tools:ignore="HardcodedText" />
-                </RelativeLayout>
-            </RelativeLayout>
-
-
-            <RelativeLayout
-                android:id="@+id/date4_rl"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:alpha="0.9"
-                android:gravity="center">
-
-                <TextView
-                    android:id="@+id/date4_tv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:text="12"
-                    android:textColor="#292727"
-                    android:textSize="16sp"
-                    tools:ignore="HardcodedText" />
-
-                <TextView
-                    android:id="@+id/week_tv4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/date4_tv"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="-2dp"
-                    android:text="周四"
-                    android:textColor="#a9a9a9"
-                    android:textSize="9sp"
-                    tools:ignore="HardcodedText" />
-            </RelativeLayout>
-
-        </RelativeLayout>
+        </LinearLayout>
 
 
         <RelativeLayout

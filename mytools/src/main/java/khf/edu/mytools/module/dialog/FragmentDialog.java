@@ -9,7 +9,9 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.OrientationHelper;
+import android.support.v7.widget.RecyclerView;
 import android.util.SparseArray;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -19,11 +21,11 @@ import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
 
 import khf.edu.mytools.R;
+import khf.edu.mytools.module.adapter.DateAdapter;
 import khf.edu.mytools.module.adapter.FragmentAdapter;
 import khf.edu.mytools.module.bean.LeaveBeanShell;
 import khf.edu.mytools.module.fragment.MyFragment;
@@ -40,7 +42,9 @@ public class FragmentDialog extends DialogFragment implements MyFragment.AllClic
     private List<LeaveBeanShell> shells;//存储课程数据信息
     public static int flag_fragment = 0;//当前fragment的位置
     private MyFragment myFragment;
-    private SparseArray<View> viewSparseArray;
+    private RecyclerView date_rv;
+    private List<String> date;
+    private List<String> week;
 
 
     @Nullable
@@ -81,9 +85,15 @@ public class FragmentDialog extends DialogFragment implements MyFragment.AllClic
         context = this.getActivity();
         viewPager = view.findViewById(R.id.my_vp);
         select_all_tv = view.findViewById(R.id.select_all_tv);
-        if (viewSparseArray==null){
-            viewSparseArray = new SparseArray<>();
-        }
+        date_rv = view.findViewById(R.id.date_rv);
+        date = new LinkedList<>();
+        week = new LinkedList<>();
+        LinearLayoutManager layoutManager_course = new LinearLayoutManager(context);
+        date_rv.setLayoutManager(layoutManager_course);
+        layoutManager_course.setOrientation(OrientationHelper.HORIZONTAL);
+        DateAdapter dateAdapter= new DateAdapter(context, date,week);
+        date_rv.setAdapter(dateAdapter);
+        dateAdapter.notifyDataSetChanged();
     }
 
     /**

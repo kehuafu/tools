@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import kehuafu.cn.tools.util.BaseToast;
+import kehuafu.cn.tools.util.DateUtils;
 import kehuafu.cn.tools.util.SPUtils;
 import khf.edu.mytools.R;
 import khf.edu.mytools.module.adapter.LeaveAdapter;
@@ -59,24 +60,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         for (int i=0;i<10;i++){
-            GetNextDayOnNew(i);
+            Log.i("TTTTTTT",DateUtils.GetNextDayOnNew(i).toString());
+            Log.i("TTTTTTT",DateUtils.GetWeekOnNow(i));
         }
     }
-    /**
-     * 利用j8的新特性，得到日期下一天更加方便了
-     * @return
-     */
-    @RequiresApi(api = Build.VERSION_CODES.O)
-    public LocalDate GetNextDayOnNew(int i){
-        // 取当前日期
-        LocalDate localDate = LocalDate.now();
-        // 打印当前日期
-        System.out.println("日期: "+localDate);
-        //当前对象减去指定的天数(一天)
-        localDate = localDate.minusDays(-i);
-        //打印减去一天的天数
-        System.out.println("日期的下一天："+localDate);
-        Log.i("TTTTTTTTTT",""+localDate.getDayOfWeek().toString());
-        return localDate;
-    }
+
+
 }
