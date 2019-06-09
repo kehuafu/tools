@@ -1,4 +1,4 @@
-package khf.edu.mytools.module.dialog;
+package kehuafu.cn.tools.module.dialog;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;

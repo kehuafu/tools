@@ -11,23 +11,18 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 
 import java.io.Serializable;
-import java.time.DayOfWeek;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 import kehuafu.cn.tools.util.BaseToast;
 import kehuafu.cn.tools.util.DateUtils;
-import kehuafu.cn.tools.util.SPUtils;
 import khf.edu.mytools.R;
-import khf.edu.mytools.module.adapter.LeaveAdapter;
 import khf.edu.mytools.module.bean.LeaveBeanShell;
 import khf.edu.mytools.module.dialog.Dialog;
-import khf.edu.mytools.module.fragment.MyFragment;
+
 
 public class MainActivity extends AppCompatActivity {
     private Context context;
@@ -45,8 +40,8 @@ public class MainActivity extends AppCompatActivity {
         //使用BaseToast示例
         view = getLayoutInflater().inflate(kehuafu.cn.tools.R.layout.toast_tip, null);
         BaseToast.showShort(view, "计算机网络实践教程");
+        //自定义对话框使用示例
         shells = new ArrayList<>();
-
         click_tv = findViewById(R.id.click_tv);
         click_tv.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,6 +59,4 @@ public class MainActivity extends AppCompatActivity {
             Log.i("TTTTTTT",DateUtils.GetWeekOnNow(i));
         }
     }
-
-
 }
