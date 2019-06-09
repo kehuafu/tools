@@ -158,7 +158,8 @@
                 android:id="@+id/date_left_iv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true" />
+                android:layout_centerInParent="true"
+                android:src="@drawable/btn_left_return_nor"/>
         </RelativeLayout>
 
         <LinearLayout
@@ -166,14 +167,16 @@
             android:layout_height="match_parent"
             android:layout_centerHorizontal="true"
             android:orientation="horizontal"
+            android:gravity="center"
             android:layout_marginLeft="48dp"
             android:layout_marginRight="48dp">
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/date_rv"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:overScrollMode="never"
+                android:layout_gravity="center_vertical"
                 android:scrollbars="none"
                 tools:listitem="@layout/list_item_date"/>
 
@@ -190,7 +193,8 @@
                 android:id="@+id/date_right_iv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true" />
+                android:layout_centerInParent="true"
+                android:src="@drawable/btn_right_next_nor" />
         </RelativeLayout>
 
 
@@ -205,7 +209,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="37dp"
-            android:background="#ebebeb">
+            android:background="#f3f3f3">
 
             <TextView
                 android:id="@+id/course_time_tv"
@@ -236,7 +240,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="255dp"
-        android:background="#ebebeb">
+        android:background="#f3f3f3">
 
         <android.support.v4.view.ViewPager
             android:id="@+id/my_vp"
