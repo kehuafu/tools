@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
                 Gson gson = new Gson();
                 json.put("studentID", "");
                 RequestBody formBody = RequestBody.create(JSON_TYPE,gson.toJson(json));
-                OkHttpUtils.getmInstance(context).postAsyncHttp("http://508cst.gcu.edu.cn/askOff/app/courseSchedule",formBody,"",new ResultCallback() {
+                OkHttpUtils.getmInstance(context).postAsyncHttp("http://www.baidu.com",formBody,"",new ResultCallback() {
                     @Override
                     public void onError(Request request, Exception e) {
                         Log.d(TAG, "onError: "+e.toString());
