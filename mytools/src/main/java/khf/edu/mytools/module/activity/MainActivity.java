@@ -2,23 +2,15 @@ package khf.edu.mytools.module.activity;
 
 import android.content.Context;
 import android.os.Build;
-import android.os.Parcelable;
-import android.support.annotation.RequiresApi;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.annotation.RequiresApi;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
-
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-
 import kehuafu.cn.tools.util.BaseToast;
-import kehuafu.cn.tools.util.DateUtils;
 import khf.edu.mytools.R;
 import khf.edu.mytools.module.bean.LeaveBeanShell;
 import khf.edu.mytools.module.dialog.Dialog;
@@ -46,7 +38,6 @@ public class MainActivity extends AppCompatActivity {
         click_tv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 dialog = new Dialog();
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("shells", (Serializable) shells);
@@ -54,9 +45,5 @@ public class MainActivity extends AppCompatActivity {
                 dialog.show(getSupportFragmentManager(), "dialog");
             }
         });
-        for (int i=0;i<10;i++){
-            Log.i("TTTTTTT",DateUtils.GetNextDayOnNew(i).toString());
-            Log.i("TTTTTTT",DateUtils.GetWeekOnNow(i));
-        }
     }
 }
