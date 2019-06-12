@@ -1,11 +1,11 @@
 package kehuafu.cn.tools.util;
 
 import java.io.IOException;
-
 import okhttp3.Request;
 
-abstract class ResultCallback {
-    abstract void onError(Request request, Exception e);
+public abstract class ResultCallback {
 
-    abstract void onResponse(String str) throws IOException;
+    public abstract void onError(Request request, Exception e);
+
+    public abstract void onResponse(String str) throws IOException;
 }

@@ -26,6 +26,7 @@ public class OkHttpUtils {
     private Handler mHandler;
     private Context mContext;
 
+
     public static OkHttpUtils getmInstance(Context context) {
         if (mInstance == null) {
             synchronized (OkHttpUtils.class) {
@@ -52,11 +53,13 @@ public class OkHttpUtils {
     /**
      * 异步post请求
      * @param url
-     * @param requestBody 表单参数
+     * @param jSessionId
+     * @param requestBody 请求表单
      * @param callback
      */
-    public void postAsyncHttp(String url, RequestBody requestBody, ResultCallback callback){
+    public void postAsyncHttp(String url, RequestBody requestBody,String jSessionId ,ResultCallback callback){
         final Request request = new Request.Builder()
+                .header("Cookie", jSessionId)
                 .url(url)
                 .post(requestBody)
                 .build();
