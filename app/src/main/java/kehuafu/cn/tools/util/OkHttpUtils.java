@@ -68,6 +68,16 @@ public class OkHttpUtils {
     }
 
     /**
+     * 异步post请求
+     * @param url
+     * @param requestBody
+     * @param callback
+     */
+    public void postAsyncHttp(String url, RequestBody requestBody,ResultCallback callback){
+        postAsyncHttp(url,requestBody,"",callback);
+    }
+
+    /**
      * 异步get请求
      * @param url
      * @param callback
