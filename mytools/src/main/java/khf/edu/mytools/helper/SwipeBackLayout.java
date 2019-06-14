@@ -8,6 +8,8 @@ import android.graphics.Color;
 import android.support.annotation.IntDef;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.DialogFragment;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.MotionEventCompat;
 import android.support.v4.view.ViewCompat;
 import android.support.v4.widget.ViewDragHelper;
@@ -21,6 +23,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
 import khf.edu.mytools.R;
+import khf.edu.mytools.module.dialog.Dialog;
 
 public class SwipeBackLayout extends ViewGroup {
     private static final String TAG = "SwipeBackLayout";
@@ -31,30 +34,27 @@ public class SwipeBackLayout extends ViewGroup {
     public static final int FROM_BOTTOM = 3;
     public static final int FROM_ANY = -1;
 
-    public static final int BASE_BELOCITY = 1000;
+    public static final int BASE_BELOCITY = 2000;
 
     @IntDef({FROM_LEFT, FROM_TOP, FROM_RIGHT, FROM_BOTTOM, FROM_ANY})
     @Retention(RetentionPolicy.SOURCE)
     public @interface DirectionMode {
     }
-
     private int mDirectionMode = FROM_ANY;
-
     private final ViewDragHelper mDragHelper;
     private View mDragContentView;
     private View innerScrollView;
-
     private int width, height;
-
     private int mTouchSlop;
     private float swipeBackFactor = 0.5f;
     private float swipeBackFraction;
-    private int maskAlpha = 125;
+    private int maskAlpha = 0;
     private float downX, downY;
     private boolean enableFastSwipe;
     private int leftOffset = 0;
     private int topOffset = 0;
     private int anyX, anyY;
+    private DialogFragment fragmentDialog;
 
     public SwipeBackLayout(@NonNull Context context) {
         this(context, null);
@@ -84,6 +84,15 @@ public class SwipeBackLayout extends ViewGroup {
 
     public void attachToActivity(Activity activity) {
         ViewGroup decorView = (ViewGroup) activity.getWindow().getDecorView();
+        ViewGroup decorChild = (ViewGroup) decorView.getChildAt(0);
+        decorChild.setBackgroundColor(Color.TRANSPARENT);
+        decorView.removeView(decorChild);
+        addView(decorChild);
+        decorView.addView(this);
+    }
+    public void attachToFragment(DialogFragment fragment) {
+        fragmentDialog = fragment;
+        ViewGroup decorView = (ViewGroup) fragment.getDialog().getWindow().getDecorView();
         ViewGroup decorChild = (ViewGroup) decorView.getChildAt(0);
         decorChild.setBackgroundColor(Color.TRANSPARENT);
         decorView.removeView(decorChild);
@@ -361,7 +370,9 @@ public class SwipeBackLayout extends ViewGroup {
 
 
     public void finish() {
-        ((Activity) getContext()).finish();
+        //((Activity) getContext()).finish();
+        fragmentDialog.getDialog().dismiss();
+
     }
 
     public void setSwipeBackFactor(float swipeBackFactor) {

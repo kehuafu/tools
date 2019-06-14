@@ -53,17 +53,15 @@ public class MainActivity extends AppCompatActivity {
 
         shells = new ArrayList<>();
         click_tv = findViewById(R.id.click_tv);
-        click_tv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //自定义对话框使用示例
-//                dialog = new Dialog();
-//                Bundle bundle = new Bundle();
-//                bundle.putSerializable("shells", (Serializable) shells);
-//                dialog.setArguments(bundle);
-//                dialog.show(getSupportFragmentManager(), "dialog");
+        click_tv.setOnClickListener(v -> {
+            //自定义对话框使用示例
+            dialog = new Dialog();
+            Bundle bundle = new Bundle();
+            bundle.putSerializable("shells", (Serializable) shells);
+            dialog.setArguments(bundle);
+            dialog.show(getSupportFragmentManager(), "dialog");
 
-                //异步post请求示例
+            //异步post请求示例
 //                Map<String, Object> json = new HashMap<>();
 //                Gson gson = new Gson();
 //                json.put("studentID", "");
@@ -83,8 +81,8 @@ public class MainActivity extends AppCompatActivity {
 //                        Toast.makeText(getApplicationContext(), "请求成功", Toast.LENGTH_SHORT).show();
 //                    }
 //                });
-                startActivity(new Intent(MainActivity.this,SwipeFinishActivity.class));
-            }
+            //SwipeFinishActivity页面
+            //startActivity(new Intent(MainActivity.this,SwipeFinishActivity.class));
         });
     }
 }

@@ -38,13 +38,13 @@ public class OkHttpUtils {
         return mInstance;
     }
     private OkHttpUtils(Context context){
-        File sdcache = context.getExternalCacheDir();
+        File sdCache = context.getExternalCacheDir();
         int cacheSize = 10 * 1024 * 1024;
         OkHttpClient.Builder builder = new OkHttpClient.Builder()
                 .connectTimeout(15,TimeUnit.SECONDS)
                 .writeTimeout(20,TimeUnit.SECONDS)
                 .readTimeout(20,TimeUnit.SECONDS)
-                .cache(new Cache(sdcache.getAbsoluteFile(),cacheSize));
+                .cache(new Cache(sdCache.getAbsoluteFile(),cacheSize));
         mOkHttpClient = builder.build();
         mHandler = new Handler();
         mContext = context;

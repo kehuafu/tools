@@ -30,6 +30,7 @@ import java.util.List;
 import kehuafu.cn.tools.util.DateUtils;
 import kehuafu.cn.tools.util.SPUtils;
 import khf.edu.mytools.R;
+import khf.edu.mytools.helper.SwipeBackLayout;
 import khf.edu.mytools.module.adapter.DateAdapter;
 import khf.edu.mytools.module.adapter.FragmentAdapter;
 import khf.edu.mytools.module.bean.LeaveBeanShell;
@@ -59,17 +60,20 @@ public class FragmentDialog extends DialogFragment implements MyFragment.AllClic
     private RelativeLayout date_left_rl;
     private RelativeLayout date_right_rl;
     private TextView date_tv;
-
+    private SwipeBackLayout mSwipeBackLayout;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.dialog_layout, container, false);
-        context = this.getActivity();
+        context = getContext();
         initData();
         initView();
         initListener();
+        mSwipeBackLayout = new SwipeBackLayout(context);
+        mSwipeBackLayout.attachToFragment(this);
+        mSwipeBackLayout.setDirectionMode(SwipeBackLayout.FROM_TOP);
         return view;
     }
 
@@ -221,7 +225,7 @@ public class FragmentDialog extends DialogFragment implements MyFragment.AllClic
             dialog.getWindow().setBackgroundDrawable(new ColorDrawable());
             //内容的背景色,对于全屏很重要，系统的内容宽度是不全屏的，替换为自己的后宽度可以全屏
             dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-            this.getDialog().setCanceledOnTouchOutside(true);//外部不可点击
+            this.getDialog().setCanceledOnTouchOutside(false);//外部不可点击
         }
     }
 
@@ -334,7 +338,7 @@ public class FragmentDialog extends DialogFragment implements MyFragment.AllClic
     public void onDestroy() {
         super.onDestroy();
         shells.clear();
-        dismiss();
+        //dismiss();
         SPUtils.instance().clear("date");
     }
 }
