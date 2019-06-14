@@ -7,4 +7,5 @@
     <color name="colorWhite">#ffffff</color>
     <color name="textColor">#292727</color>
     <color name="weekColor">#a9a9a9</color>
+    <color name="cpb_green">#ff99cc00</color>
 </resources>

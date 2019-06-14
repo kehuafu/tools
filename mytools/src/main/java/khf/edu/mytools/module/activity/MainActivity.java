@@ -1,6 +1,7 @@
 package khf.edu.mytools.module.activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
@@ -63,25 +64,26 @@ public class MainActivity extends AppCompatActivity {
 //                dialog.show(getSupportFragmentManager(), "dialog");
 
                 //异步post请求示例
-                Map<String, Object> json = new HashMap<>();
-                Gson gson = new Gson();
-                json.put("studentID", "");
-                RequestBody formBody = RequestBody.create(JSON_TYPE,gson.toJson(json));
-                OkHttpUtils.getmInstance(context).postAsyncHttp("http://www.mocky.io/v2/5d0351b130000067001f4ba2",
-                        formBody,new ResultCallback() {
-                    @Override
-                    public void onError(Request request, Exception e) {
-                        Log.d(TAG, "onError: "+e.toString());
-                        Toast.makeText(getApplicationContext(), "请求失败"+request.body().toString(), Toast.LENGTH_SHORT).show();
-                    }
-
-                    @Override
-                    public void onResponse(String str) throws IOException {
-
-                        Log.d(TAG, "onResponse: "+str);
-                        Toast.makeText(getApplicationContext(), "请求成功", Toast.LENGTH_SHORT).show();
-                    }
-                });
+//                Map<String, Object> json = new HashMap<>();
+//                Gson gson = new Gson();
+//                json.put("studentID", "");
+//                RequestBody formBody = RequestBody.create(JSON_TYPE,gson.toJson(json));
+//                OkHttpUtils.getmInstance(context).postAsyncHttp("http://www.mocky.io/v2/5d0351b130000067001f4ba2",
+//                        formBody,new ResultCallback() {
+//                    @Override
+//                    public void onError(Request request, Exception e) {
+//                        Log.d(TAG, "onError: "+e.toString());
+//                        Toast.makeText(getApplicationContext(), "请求失败"+request.body().toString(), Toast.LENGTH_SHORT).show();
+//                    }
+//
+//                    @Override
+//                    public void onResponse(String str) throws IOException {
+//
+//                        Log.d(TAG, "onResponse: "+str);
+//                        Toast.makeText(getApplicationContext(), "请求成功", Toast.LENGTH_SHORT).show();
+//                    }
+//                });
+                startActivity(new Intent(MainActivity.this,SwipeFinishActivity.class));
             }
         });
     }
