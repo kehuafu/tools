@@ -10,7 +10,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.google.gson.Gson;
+
+
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -22,12 +23,10 @@ import kehuafu.cn.tools.util.BaseToast;
 import kehuafu.cn.tools.util.OkHttpUtils;
 import kehuafu.cn.tools.util.ResultCallback;
 import khf.edu.mytools.R;
+import khf.edu.mytools.common.Student;
 import khf.edu.mytools.module.bean.LeaveBeanShell;
 import khf.edu.mytools.module.dialog.Dialog;
-import okhttp3.FormBody;
-import okhttp3.MediaType;
 import okhttp3.Request;
-import okhttp3.RequestBody;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -37,10 +36,9 @@ public class MainActivity extends AppCompatActivity {
     private static List<LeaveBeanShell> shells;//存储课程数据信息
     private View view;
     private static final String TAG = "MainActivity";
-    private static final MediaType JSON_TYPE = MediaType.parse("application/json;charset=utf-8");
-    private static final String HEADER_NAME = "Authorization";
-    private static final String HEADER_CONTENT = "Bearer";
 
+
+    @SuppressWarnings("unchecked")
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,25 +60,31 @@ public class MainActivity extends AppCompatActivity {
             dialog.show(getSupportFragmentManager(), "dialog");
 
             //异步post请求示例
-//                Map<String, Object> json = new HashMap<>();
-//                Gson gson = new Gson();
-//                json.put("studentID", "");
-//                RequestBody formBody = RequestBody.create(JSON_TYPE,gson.toJson(json));
-//                OkHttpUtils.getmInstance(context).postAsyncHttp("http://www.mocky.io/v2/5d0351b130000067001f4ba2",
-//                        formBody,new ResultCallback() {
-//                    @Override
-//                    public void onError(Request request, Exception e) {
-//                        Log.d(TAG, "onError: "+e.toString());
-//                        Toast.makeText(getApplicationContext(), "请求失败"+request.body().toString(), Toast.LENGTH_SHORT).show();
-//                    }
-//
-//                    @Override
-//                    public void onResponse(String str) throws IOException {
-//
-//                        Log.d(TAG, "onResponse: "+str);
-//                        Toast.makeText(getApplicationContext(), "请求成功", Toast.LENGTH_SHORT).show();
-//                    }
-//                });
+            //参数一
+            Student student = new Student();
+            student.setId("123");
+            student.setSex("男");
+            student.setAge("21");
+            //参数二
+            Map<String, Object> map = new HashMap<>();
+            map.put("id", "123");
+            map.put("sex", "男");
+            map.put("age", "21");
+            OkHttpUtils.getmInstance(context).postAsyncHttp("http://www.mocky.io/v2/5d0351b130000067001f4ba2",
+                    map, new ResultCallback() {
+                        @Override
+                        public void onError(Request request, Exception e) {
+                            Log.d(TAG, "onError: " + e.toString());
+                            Toast.makeText(getApplicationContext(), "请求失败" + request.body().toString(), Toast.LENGTH_SHORT).show();
+                        }
+
+                        @Override
+                        public void onResponse(String str) throws IOException {
+
+                            Log.d(TAG, "onResponse: " + str);
+                            Toast.makeText(getApplicationContext(), "请求成功", Toast.LENGTH_SHORT).show();
+                        }
+                    });
             //SwipeFinishActivity页面
             //startActivity(new Intent(MainActivity.this,SwipeFinishActivity.class));
         });
