@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingRight="-2dp"
+    android:background="#eeeeee"
+    android:orientation="vertical">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/colorWhite"
+        android:orientation="horizontal">
+        <ImageView
+            android:id="@+id/menu_iv"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:padding="12dp"
+            android:src="@drawable/menu_selector"
+            android:scaleType="centerInside"/>
+        <android.support.v7.widget.RecyclerView
+            android:layout_toRightOf="@+id/menu_iv"
+            android:layout_toLeftOf="@+id/camera_iv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <ImageView
+            android:id="@+id/camera_iv"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentRight="true"
+            android:padding="12dp"
+            android:src="@drawable/camera_selector"
+            android:scaleType="centerInside"/>
+
+    </RelativeLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/my_rv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:divider="#1195f4"
+        android:dividerHeight="1dp">
+
+    </android.support.v7.widget.RecyclerView>
+
+</LinearLayout>

@@ -7,7 +7,7 @@
     android:background="@color/cpb_green"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".module.activity.SwipeFinishActivity">
+    tools:context=".module.cardslip.activity.SwipeFinishActivity">
 
 
     <RadioGroup

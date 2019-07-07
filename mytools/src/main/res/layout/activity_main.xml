@@ -4,22 +4,45 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".module.activity.MainActivity">
+    tools:context=".module.home.activity.MainActivity">
 
     <TextView
         android:id="@+id/click_tv"
         android:layout_width="80dp"
         android:layout_height="30dp"
-        android:gravity="center"
-        android:text="点击"
-        android:background="@color/colorDefault"
-        android:layout_centerInParent="true"/>
-    <ImageView
-        android:id="@+id/my_iv"
-        android:layout_marginTop="10dp"
-        android:layout_below="@+id/click_tv"
         android:layout_centerInParent="true"
+        android:background="@color/colorDefault"
+        android:gravity="center"
+        android:text="点击" />
+
+    <Button
+        android:id="@+id/my_btn"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/click_tv"
+        android:text="button"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="10dp"
+        tools:ignore="HardcodedText" />
+    <TextView
+        android:id="@+id/test_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="10dp"
+        android:text="记录世界记录你"
+        android:layout_below="@+id/my_btn"/>
+
+    <khf.edu.mytools.module.home.view.FloatButton
+        android:id="@+id/fab_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="20dp"
+        android:backgroundTint="@color/colorDefault"
+        android:clickable="true"
+        android:elevation="3dp"
+        android:src="@drawable/recording"
+        app:pressedTranslationZ="6dp" />
 
 </RelativeLayout>

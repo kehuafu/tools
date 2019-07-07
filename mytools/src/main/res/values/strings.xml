@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">MyTools</string>
+    <string name="title">事务提醒</string>
+    <string name="content">记得翻来吃饭哦！</string>
 </resources>
