@@ -8,8 +8,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
+
 import java.util.List;
+
+import imageloader.libin.com.images.config.ScaleMode;
+import imageloader.libin.com.images.loader.ImageLoader;
+import kehuafu.cn.tools.util.RoundImageView;
 import khf.edu.mytools.R;
 
 public class WaterFallAdapter extends RecyclerView.Adapter<WaterFallAdapter.MyViewHolder> {
@@ -17,11 +21,13 @@ public class WaterFallAdapter extends RecyclerView.Adapter<WaterFallAdapter.MyVi
     private Context mContext;
     private List<String> mList;
     private List<Integer> mHeight;
+    private List<Integer> mColor;
     private OnItemClickListener onItemClickListener;
-    public WaterFallAdapter(Context context,List<String> list,List<Integer> mHeight) {
+    public WaterFallAdapter(Context context,List<String> list,List<Integer> mHeight,List<Integer> mColor) {
         this.mContext = context;
         this.mList = list;
         this.mHeight = mHeight;
+        this.mColor = mColor;
     }
 
     public void removeData(int position){
@@ -49,10 +55,19 @@ public class WaterFallAdapter extends RecyclerView.Adapter<WaterFallAdapter.MyVi
      */
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, final int i) {
-        //holder.itemIv.setText(mList.get(i));
+        ImageLoader.with(mContext)
+                .url("http://www.huaguangstore.com.cn/user_images/person.jpg")
+                .placeHolder(R.mipmap.user_unload)
+                .rectRoundCorner(30)
+                .into(holder.cardUserIv);
         ViewGroup.LayoutParams layoutParams =holder.itemIv.getLayoutParams();
         layoutParams.height = mHeight.get(i);
         holder.itemIv.setLayoutParams(layoutParams);
+        ImageLoader.with(mContext)
+                .url("http://www.huaguangstore.com.cn/user_images/yuge.jpg")
+                .placeHolder(mColor.get(i))
+                .scale(ScaleMode.FIT_CENTER)
+                .into(holder.itemIv);
         if (onItemClickListener!=null){
             holder.cardView.setOnClickListener(v -> {
                 int pos = holder.getLayoutPosition();
@@ -79,10 +94,12 @@ public class WaterFallAdapter extends RecyclerView.Adapter<WaterFallAdapter.MyVi
 
         ImageView itemIv;
         CardView cardView;
+        RoundImageView cardUserIv;
         MyViewHolder(@NonNull View itemView) {
             super(itemView);
             itemIv = itemView.findViewById(R.id.iv_item);
             cardView = itemView.findViewById(R.id.card_view);
+            cardUserIv = itemView.findViewById(R.id.card_user_iv);
         }
     }
     public interface OnItemClickListener{

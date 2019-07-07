@@ -17,12 +17,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import imageloader.libin.com.images.loader.ImageLoader;
 import kehuafu.cn.tools.framework.BaseActivity;
 import kehuafu.cn.tools.util.BaseToast;
 import khf.edu.mytools.R;
@@ -47,6 +51,7 @@ public class MainActivity extends BaseActivity {
     private FloatButton fab;
     private Button button;
     private TextView testTv;
+    private ImageView cardIv;
 
     @Override
     protected void initListener() {
@@ -160,6 +165,14 @@ public class MainActivity extends BaseActivity {
 //                Animator animator = AnimatorInflater.loadAnimator(context,R.animator.scale);
 //                animator.setTarget(testTv);
 //                animator.start();
+            ImageLoader.with(context)
+                    .url("http://www.huaguangstore.com.cn/user_images/Koala.jpg")
+                    .placeHolder(R.mipmap.user_unload)
+                    .asCircle()
+                    .override(50,50)
+                    .rectRoundCorner(10)
+                    .into(cardIv);
+
         });
     }
 
@@ -169,6 +182,7 @@ public class MainActivity extends BaseActivity {
         fab = findViewById(R.id.fab_view);
         button= findViewById(R.id.my_btn);
         testTv =findViewById(R.id.test_tv);
+        cardIv = findViewById(R.id.card_iv);
     }
 
     @Override
