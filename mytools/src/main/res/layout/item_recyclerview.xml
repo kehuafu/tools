@@ -25,7 +25,7 @@
                 android:scaleType="fitXY"
                 android:src="@drawable/koala" />
 
-            <kehuafu.cn.tools.util.RoundImageView
+            <kehuafu.cn.tools.custom.RoundImageView
                 android:id="@+id/card_user_iv"
                 android:layout_width="30dp"
                 android:layout_height="30dp"

@@ -1,10 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<kehuafu.cn.tools.custom.MyRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".module.home.activity.MainActivity">
+
+    <kehuafu.cn.tools.custom.RoundImageView
+        android:layout_marginTop="20dp"
+        android:id="@+id/mine_iv"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_gravity="center_horizontal"
+        android:scaleType="fitXY"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="30dp"
+        android:layout_above="@+id/click_tv"
+        android:src="@drawable/wx_mine"
+        app:type="round"/>
 
     <TextView
         android:id="@+id/click_tv"
@@ -24,7 +37,7 @@
         android:layout_centerInParent="true"
         android:layout_marginTop="10dp"
         tools:ignore="HardcodedText" />
-    <TextView
+    <kehuafu.cn.tools.custom.MyTextView
         android:id="@+id/test_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -51,4 +64,4 @@
         android:src="@drawable/recording"
         app:pressedTranslationZ="6dp" />
 
-</RelativeLayout>
+</kehuafu.cn.tools.custom.MyRelativeLayout>

@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<objectAnimator xmlns:android="http://schemas.android.com/apk/res/android"
-    android:duration="1000"
-    android:propertyName="scaleX"
-    android:valueFrom="1.0"
-    android:valueTo="3.0"
-    android:valueType="floatType"
-    >
-</objectAnimator>
+<set xmlns:android="http://schemas.android.com/apk/res/android"
+    android:ordering="together">
+    <objectAnimator
+        android:duration="3000"
+        android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+        android:propertyName="rotation"
+        android:repeatCount="infinite"
+        android:repeatMode="reverse"
+        android:valueFrom="30.0"
+        android:valueTo="-30.0"
+        android:valueType="floatType" />
+</set>

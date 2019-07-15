@@ -1,15 +1,15 @@
-package kehuafu.cn.tools.util;
+package kehuafu.cn.tools.imageloader;
 
 import android.graphics.Bitmap;
-import android.util.Log;
 import android.util.LruCache;
 
-public class ImageCache {
-    private static final String TAG = "ImageCache";
-    //图片LRU缓存
-    LruCache<String, Bitmap> mImageCache;
-
-    public ImageCache() {
+/**
+ * 内存缓存类
+ */
+public class MemoryCache implements ImageCache {
+    private LruCache<String,Bitmap> bitmapLruCache;
+    public MemoryCache(){
+        //初始化LRU缓存
         initImageCache();
     }
 
@@ -18,19 +18,21 @@ public class ImageCache {
         final int maxMemory = (int) (Runtime.getRuntime().maxMemory() / 1024);
         //取四分之一的可用内存作为缓存
         final int cacheSize = maxMemory / 4;
-        mImageCache = new LruCache<String, Bitmap>(cacheSize) {
+        bitmapLruCache = new LruCache<String, Bitmap>(cacheSize) {
             @Override
             protected int sizeOf(String key, Bitmap bitmap) {
-                Log.d(TAG, "sizeOf: "+bitmap);
                 return bitmap.getRowBytes() * bitmap.getHeight() / 1024;
             }
         };
     }
 
-    public void put(String url, Bitmap bitmap) {
-        mImageCache.put(url,bitmap);
+    @Override
+    public Bitmap get(String url) {
+        return bitmapLruCache.get(url);
     }
-    public Bitmap get(String url){
-        return mImageCache.get(url);
+
+    @Override
+    public void put(String url, Bitmap bitmap) {
+        bitmapLruCache.put(url,bitmap);
     }
 }

@@ -13,7 +13,7 @@ import java.util.List;
 
 import imageloader.libin.com.images.config.ScaleMode;
 import imageloader.libin.com.images.loader.ImageLoader;
-import kehuafu.cn.tools.util.RoundImageView;
+import kehuafu.cn.tools.custom.RoundImageView;
 import khf.edu.mytools.R;
 
 public class WaterFallAdapter extends RecyclerView.Adapter<WaterFallAdapter.MyViewHolder> {
@@ -64,7 +64,7 @@ public class WaterFallAdapter extends RecyclerView.Adapter<WaterFallAdapter.MyVi
         layoutParams.height = mHeight.get(i);
         holder.itemIv.setLayoutParams(layoutParams);
         ImageLoader.with(mContext)
-                .url("http://www.huaguangstore.com.cn/user_images/yuge.jpg")
+                .url("http://www.huaguangstore.com.cn/user_images/person.jpg")
                 .placeHolder(mColor.get(i))
                 .scale(ScaleMode.FIT_CENTER)
                 .into(holder.itemIv);

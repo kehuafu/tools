@@ -7,6 +7,7 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.animation.ValueAnimator;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -15,6 +16,7 @@ import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -27,7 +29,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import imageloader.libin.com.images.loader.ImageLoader;
+import kehuafu.cn.tools.custom.MyTextView;
+import kehuafu.cn.tools.custom.RoundImageView;
 import kehuafu.cn.tools.framework.BaseActivity;
+import kehuafu.cn.tools.imageloader.DiskCache;
+import kehuafu.cn.tools.imageloader.DoubleCache;
+import kehuafu.cn.tools.imageloader.MemoryCache;
 import kehuafu.cn.tools.util.BaseToast;
 import khf.edu.mytools.R;
 import khf.edu.mytools.module.home.view.FloatButton;
@@ -37,7 +44,7 @@ import khf.edu.mytools.module.waterfall.activity.WaterFallActivity;
 import okhttp3.MediaType;
 
 
-public class MainActivity extends BaseActivity {
+public class MainActivity extends BaseActivity implements View.OnClickListener, View.OnTouchListener {
     private Context context;
     private TextView click_tv;
     private Dialog dialog;
@@ -50,12 +57,16 @@ public class MainActivity extends BaseActivity {
     private LinearLayout linearLayout;
     private FloatButton fab;
     private Button button;
-    private TextView testTv;
+    private MyTextView myTextView;
     private ImageView cardIv;
+    private RoundImageView mineIv;
 
+
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void initListener() {
-
+        myTextView.setOnClickListener(this);
+        myTextView.setOnTouchListener(this);
         //使用BaseToast示例
         view = getLayoutInflater().inflate(kehuafu.cn.tools.R.layout.toast_tip, null);
         BaseToast.showShort(view, "计算机网络实践教程");
@@ -165,28 +176,129 @@ public class MainActivity extends BaseActivity {
 //                Animator animator = AnimatorInflater.loadAnimator(context,R.animator.scale);
 //                animator.setTarget(testTv);
 //                animator.start();
-            ImageLoader.with(context)
-                    .url("http://www.huaguangstore.com.cn/user_images/Koala.jpg")
-                    .placeHolder(R.mipmap.user_unload)
-                    .asCircle()
-                    .override(50,50)
-                    .rectRoundCorner(10)
-                    .into(cardIv);
+//            ImageLoader.with(context)
+//                    .url("http://www.huaguangstore.com.cn/user_images/Koala.jpg")
+//                    .placeHolder(R.mipmap.user_unload)
+//                    .asCircle()
+//                    .override(50,50)
+//                    .rectRoundCorner(10)
+//                    .into(cardIv);
+            //ImageLoader imageLoader = new ImageLoader();
+            //使用内存缓存
+            //imageLoader.setImageCache(new MemoryCache());
+            //使用SD卡缓存
+            //imageLoader.setImageCache(new DiskCache());
+            //使用双缓存缓存
+//            imageLoader.setImageCache(new DoubleCache());
+//            imageLoader.displayImage("http://www.huaguangstore.com.cn/user_images/Koala.jpg",cardIv);
 
         });
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void initView() {
         context = this;
         fab = findViewById(R.id.fab_view);
-        button= findViewById(R.id.my_btn);
-        testTv =findViewById(R.id.test_tv);
+        button = findViewById(R.id.my_btn);
         cardIv = findViewById(R.id.card_iv);
+        myTextView = findViewById(R.id.test_tv);
+        mineIv = findViewById(R.id.mine_iv);
+        //属性动画,我的头像
+        Animator animator = AnimatorInflater.loadAnimator(this, R.animator.scale);
+        animator.setTarget(mineIv);
+        animator.start();
+    }
+
+    /**
+     * 分发
+     *
+     * @param ev
+     * @return
+     */
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        switch (ev.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                Log.d(TAG, "dispatchTouchEvent: ACTION_DOWN");
+                break;
+            case MotionEvent.ACTION_MOVE:
+                Log.d(TAG, "dispatchTouchEvent: ACTION_MOVE");
+                break;
+            case MotionEvent.ACTION_UP:
+                Log.d(TAG, "dispatchTouchEvent:ACTION_UP ");
+                break;
+            case MotionEvent.ACTION_CANCEL:
+                Log.d(TAG, "dispatchTouchEvent: ACTION_CANCEL");
+                break;
+            default:
+                break;
+        }
+        return super.dispatchTouchEvent(ev);//当为true时不再向下分发事件
+    }
+
+    /**
+     * 消费
+     * @param event
+     * @return
+     */
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        switch (event.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                Log.d(TAG, "onTouchEvent:ACTION_DOWN ");
+                break;
+            case MotionEvent.ACTION_MOVE:
+                Log.d(TAG, "onTouchEvent: ACTION_MOVE");
+                break;
+            case MotionEvent.ACTION_UP:
+                Log.d(TAG, "onTouchEvent: ACTION_UP");
+                break;
+            case MotionEvent.ACTION_CANCEL:
+                Log.d(TAG, "onTouchEvent: ACTION_CANCEL");
+                break;
+            default:
+                break;
+        }
+        return super.onTouchEvent(event);
     }
 
     @Override
     protected int setLayout() {
         return R.layout.activity_main;
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.test_tv:
+                Log.d(TAG, "onClick: myTextView");
+                break;
+        }
+    }
+
+    @Override
+    public boolean onTouch(View v, MotionEvent event) {
+//        switch (v.getId()) {
+//            case R.id.test_tv:
+//                switch (event.getAction()) {
+//                    case MotionEvent.ACTION_DOWN:
+//                        Log.d(TAG, "onTouch: ACTION_DOWN");
+//                        break;
+//                    case MotionEvent.ACTION_MOVE:
+//                        Log.d(TAG, "onTouch: ACTION_MOVE");
+//                        break;
+//                    case MotionEvent.ACTION_UP:
+//                        Log.d(TAG, "onTouch: ACTION_UP");
+//                        break;
+//                    case MotionEvent.ACTION_CANCEL:
+//                        Log.d(TAG, "onTouch: ACTION_CANCEL");
+//                        break;
+//                    default:
+//                        break;
+//                }
+//                break;
+//        }
+        return false;
     }
 }

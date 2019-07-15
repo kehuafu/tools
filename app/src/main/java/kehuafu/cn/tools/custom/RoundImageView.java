@@ -1,4 +1,4 @@
-package kehuafu.cn.tools.util;
+package kehuafu.cn.tools.custom;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -8,11 +8,8 @@ import android.graphics.BitmapShader;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.graphics.Paint;
-import android.graphics.PorterDuff;
-import android.graphics.PorterDuffXfermode;
 import android.graphics.RectF;
 import android.graphics.Shader;
-import android.graphics.Xfermode;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.util.AttributeSet;
@@ -20,7 +17,6 @@ import android.util.TypedValue;
 import android.widget.ImageView;
 
 import java.lang.ref.WeakReference;
-import java.lang.reflect.Method;
 
 import kehuafu.cn.tools.R;
 
@@ -30,19 +26,20 @@ import kehuafu.cn.tools.R;
 @SuppressLint("AppCompatCustomView")
 public class RoundImageView extends ImageView {
     /**
-     * 圆形模式
-     */
-    private static final int MODE_CIRCLE = 1;
-    /**
      * 普通模式
      */
     private static final int MODE_NONE = 0;
+    /**
+     * 圆形模式
+     */
+    private static final int MODE_CIRCLE = 1;
     /**
      * 圆角模式
      */
     private static final int MODE_ROUND = 2;
     private Paint mPaint;
-    private int currMode = 0;
+    //默认当前模式为0
+    private int currMode;
     /**
      * 圆角半径
      */

@@ -4,8 +4,8 @@
     package="khf.edu.mytools">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_NOTIFICATION_POLICY" />
     <uses-permission
         android:name="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE"
@@ -20,6 +20,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".module.annotation.activity.AnnotationActivity" android:exported="true"/>
         <activity android:name=".module.home.activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -30,7 +31,10 @@
         <activity android:name=".module.cardslip.activity.SwipeFinishActivity" />
         <activity android:name=".module.waterfall.activity.WaterFallActivity" />
         <activity android:name=".module.notification.activity.NotificationActivity" />
-        <activity android:name=".module.tablayout.activity.TabLayoutActivity"></activity>
+        <activity android:name=".module.tablayout.activity.TabLayoutActivity" />
+        <activity
+            android:name=".module.animation.activity.FrameActivity"
+            android:exported="true" />
     </application>
 
 </manifest>
