@@ -19,9 +19,20 @@ allprojects {
     repositories {
         google()
         jcenter()
+        flatDir {
+            dirs '../app/libs'
+        }
     }
 }
 
 task clean(type: Delete) {
     delete rootProject.buildDir
+}
+//通用配置
+subprojects {
+    apply from: "${project.rootDir}/common_config.gradle"
+
+    dependencies {
+        //testCompile 'junit:junit:4.12'
+    }
 }

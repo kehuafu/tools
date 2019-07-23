@@ -1,42 +1,44 @@
 package khf.edu.mytools.module.home.activity;
 
+import android.Manifest;
 import android.animation.Animator;
 import android.animation.AnimatorInflater;
-import android.animation.AnimatorListenerAdapter;
-import android.animation.AnimatorSet;
-import android.animation.ObjectAnimator;
-import android.animation.PropertyValuesHolder;
-import android.animation.ValueAnimator;
 import android.annotation.SuppressLint;
-import android.app.Activity;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Build;
-import android.os.Bundle;
-import android.support.annotation.RequiresApi;
-import android.support.v7.app.AppCompatActivity;
+import android.content.IntentFilter;
+import android.content.pm.PackageManager;
+import android.location.LocationListener;
+import android.location.LocationManager;
+import android.os.Environment;
+import android.support.v4.app.ActivityCompat;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewStub;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
-
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-import imageloader.libin.com.images.loader.ImageLoader;
 import kehuafu.cn.tools.custom.MyTextView;
 import kehuafu.cn.tools.custom.RoundImageView;
 import kehuafu.cn.tools.framework.BaseActivity;
-import kehuafu.cn.tools.imageloader.DiskCache;
 import kehuafu.cn.tools.imageloader.DoubleCache;
-import kehuafu.cn.tools.imageloader.MemoryCache;
+import kehuafu.cn.tools.imageloader.ImageLoader;
 import kehuafu.cn.tools.util.BaseToast;
+import kehuafu.cn.tools.util.RealTimeNetwork;
 import khf.edu.mytools.R;
+import khf.edu.mytools.module.builder.toast.CustomToast;
 import khf.edu.mytools.module.home.view.FloatButton;
 import khf.edu.mytools.module.leave.bean.LeaveBeanShell;
 import khf.edu.mytools.module.leave.dialog.Dialog;
@@ -60,9 +62,12 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     private MyTextView myTextView;
     private ImageView cardIv;
     private RoundImageView mineIv;
+    private ViewStub viewStub;
+    private IntentFilter intentFilter;
+    private RealTimeNetwork realTimeNetwork;
 
 
-    @SuppressLint("ClickableViewAccessibility")
+    @SuppressLint({"ClickableViewAccessibility", "InflateParams"})
     @Override
     protected void initListener() {
         myTextView.setOnClickListener(this);
@@ -183,14 +188,20 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
 //                    .override(50,50)
 //                    .rectRoundCorner(10)
 //                    .into(cardIv);
-            //ImageLoader imageLoader = new ImageLoader();
+            ImageLoader imageLoader = new ImageLoader();
             //使用内存缓存
             //imageLoader.setImageCache(new MemoryCache());
             //使用SD卡缓存
             //imageLoader.setImageCache(new DiskCache());
             //使用双缓存缓存
-//            imageLoader.setImageCache(new DoubleCache());
-//            imageLoader.displayImage("http://www.huaguangstore.com.cn/user_images/Koala.jpg",cardIv);
+            imageLoader.setImageCache(new DoubleCache());
+            imageLoader.displayImage("http://www.huaguangstore.com.cn/user_images/yuge.webp", cardIv);
+
+            //Snackbar提示栏
+//            Snackbar.make(button,"Here 's a Snackbar",Snackbar.LENGTH_LONG)
+//                    .setAction("Action",null)
+//                    .show();
+            new CustomToast.Builder(this).message("柯华富").build();
 
         });
     }
@@ -199,15 +210,24 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     @Override
     protected void initView() {
         context = this;
+        setBarColor(getResources().getColor(R.color.colorDefault));
         fab = findViewById(R.id.fab_view);
         button = findViewById(R.id.my_btn);
-        cardIv = findViewById(R.id.card_iv);
+        viewStub = findViewById(R.id.loading_stub);
+        viewStub.inflate();
+        cardIv = findViewById(R.id.error_view);
         myTextView = findViewById(R.id.test_tv);
         mineIv = findViewById(R.id.mine_iv);
         //属性动画,我的头像
         Animator animator = AnimatorInflater.loadAnimator(this, R.animator.scale);
         animator.setTarget(mineIv);
         animator.start();
+        //实时网络监听
+        intentFilter = new IntentFilter();
+        intentFilter.addAction("android.net.conn.CONNECTIVITY_CHANGE");
+        realTimeNetwork = new RealTimeNetwork();
+        registerReceiver(realTimeNetwork,intentFilter);
+
     }
 
     /**
@@ -223,13 +243,13 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
                 Log.d(TAG, "dispatchTouchEvent: ACTION_DOWN");
                 break;
             case MotionEvent.ACTION_MOVE:
-                Log.d(TAG, "dispatchTouchEvent: ACTION_MOVE");
+                //Log.d(TAG, "dispatchTouchEvent: ACTION_MOVE");
                 break;
             case MotionEvent.ACTION_UP:
-                Log.d(TAG, "dispatchTouchEvent:ACTION_UP ");
+                //Log.d(TAG, "dispatchTouchEvent:ACTION_UP ");
                 break;
             case MotionEvent.ACTION_CANCEL:
-                Log.d(TAG, "dispatchTouchEvent: ACTION_CANCEL");
+                // Log.d(TAG, "dispatchTouchEvent: ACTION_CANCEL");
                 break;
             default:
                 break;
@@ -239,6 +259,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
 
     /**
      * 消费
+     *
      * @param event
      * @return
      */
@@ -249,13 +270,13 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
                 Log.d(TAG, "onTouchEvent:ACTION_DOWN ");
                 break;
             case MotionEvent.ACTION_MOVE:
-                Log.d(TAG, "onTouchEvent: ACTION_MOVE");
+                //Log.d(TAG, "onTouchEvent: ACTION_MOVE");
                 break;
             case MotionEvent.ACTION_UP:
-                Log.d(TAG, "onTouchEvent: ACTION_UP");
+                //Log.d(TAG, "onTouchEvent: ACTION_UP");
                 break;
             case MotionEvent.ACTION_CANCEL:
-                Log.d(TAG, "onTouchEvent: ACTION_CANCEL");
+                //Log.d(TAG, "onTouchEvent: ACTION_CANCEL");
                 break;
             default:
                 break;
@@ -300,5 +321,52 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
 //                break;
 //        }
         return false;
+    }
+
+    //是否关闭广播接收器
+    private void enableBroadcastReceiver(boolean isEnabled, Class<?> receiver) {
+        PackageManager pm = getPackageManager();
+        ComponentName receiverName = new ComponentName(this, receiver);
+        int newState;
+        if (isEnabled) {
+            newState = PackageManager.COMPONENT_ENABLED_STATE_ENABLED;
+        } else {
+            newState = PackageManager.COMPONENT_ENABLED_STATE_DISABLED;
+        }
+        pm.setComponentEnabledSetting(receiverName, newState, PackageManager.DONT_KILL_APP);
+    }
+
+    //禁用位置监听器
+    private void disableLocaltionListener(LocationListener listener) {
+        LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED &&ActivityCompat.checkSelfPermission(this,
+                Manifest.permission.ACCESS_COARSE_LOCATION)!=PackageManager.PERMISSION_GRANTED){
+            return;
+        }
+        locationManager.removeUpdates(listener);
+    }
+
+    /**
+     * 以主线程中的文件写入为例，引起违例警告的代码
+     */
+    public void writeToExternalStorage() {
+        File externalStorage = Environment.getExternalStorageDirectory();
+        File destFile = new File(externalStorage, "dest.txt");
+        try {
+            OutputStream output = new FileOutputStream(destFile, true);
+            output.write("droidyue.com".getBytes());
+            output.flush();
+            output.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        unregisterReceiver(realTimeNetwork);
     }
 }

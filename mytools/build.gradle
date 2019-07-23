@@ -1,25 +1,43 @@
 apply plugin: 'com.android.application'
-
+apply from: '../config/quality.gradle'
 android {
-    compileSdkVersion 28
+    compileSdkVersion project.ext.compileSdkVersion
     defaultConfig {
         applicationId "khf.edu.mytools"
-        minSdkVersion 19
-        targetSdkVersion 28
+        minSdkVersion project.ext.minSdkVersion
+        targetSdkVersion project.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
     }
+    //签名
+    signingConfigs {
+        //-----------需要替换成项目自己的值，其中xxx.keystore文件和build.gradle位于同级----------//
+        myConfig {
+            storeFile file("xxx.keystore")
+            storePassword "xxxx"
+            keyAlias "xxxx"
+            keyPassword "xxxx"
+        }
+    }
     buildTypes {
+        //混淆相关
         release {
-            minifyEnabled false
+            //签名配置
+            signingConfig signingConfigs.myConfig
+
+            //release版本一定要进行代码混淆
+            minifyEnabled project.ext.minifyEnabled
+            //是否开启去除无用的resources文件
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-    buildToolsVersion '28.0.3'
+    buildToolsVersion project.ext.buildToolsVersion
     compileOptions {
+        //JDK版本兼容
         sourceCompatibility = '1.8'
         targetCompatibility = '1.8'
     }
@@ -27,7 +45,7 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    //noinspection GradleCompatible
+
     implementation 'com.android.support:appcompat-v7:28.0.0'
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
     testImplementation 'junit:junit:4.12'
@@ -45,4 +63,5 @@ dependencies {
     //implementation 'com.android.support:support-v4:28.0.0'
     implementation 'com.libin.imageloader:ImageLoader:1.0.3'//Glide的二次封装
     implementation 'androidx.annotation:annotation:1.1.0'
+    implementation 'com.android.support:percent:28.0.0'
 }

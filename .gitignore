@@ -1,11 +1,27 @@
 *.iml
 .gradle
 /local.properties
-/.idea/caches/build_file_checksums.ser
-/.idea/libraries
-/.idea/modules.xml
-/.idea/workspace.xml
 .DS_Store
 /build
 /captures
 .externalNativeBuild
+### Example user template template
+### Example user template
+
+# IntelliJ project files
+.idea
+out
+gen
+app/libs/
+app/src/main/java/kehuafu/cn/tools/adapter/
+config/channel/
+config/module/
+config/quality/findbugs/
+config/quality/lint/
+config/quality/pmd/
+config/style/
+mytools/sampledata/
+mytools/src/main/java/khf/edu/mytools/api/
+mytools/src/main/java/khf/edu/mytools/module/leave/activity/
+mytools/src/main/java/khf/edu/mytools/module/notification/bean/
+mytools/src/main/java/khf/edu/mytools/module/waterfall/bean/

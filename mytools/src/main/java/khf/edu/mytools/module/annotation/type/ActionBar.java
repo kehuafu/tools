@@ -16,12 +16,13 @@ public abstract class ActionBar {
             NAVIGATION_MODE_TABS
     })
     //定义NavigationMode注解
-    public @interface NavigationMode{}
+    public @interface NavigationMode {
+    }
 
     //常量定义
     public static final int NAVIGATION_MODE_STANDARD = 0;
     public static final int NAVIGATION_MODE_LIST = 1;
-    public static final int  NAVIGATION_MODE_TABS= 2;
+    public static final int NAVIGATION_MODE_TABS = 2;
 
     @NavigationMode
     public abstract int getNavigationMode();

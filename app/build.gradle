@@ -1,25 +1,40 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion project.ext.compileSdkVersion
     defaultConfig {
         //applicationId "kehuafu.cn.tools"
-        minSdkVersion 15
-        targetSdkVersion 28
+        minSdkVersion project.ext.minSdkVersion
+        targetSdkVersion project.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled project.ext.minifyEnabled
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-    buildToolsVersion '28.0.3'
+    buildToolsVersion project.ext.buildToolsVersion
+    //为了能够在工程的libs目录中找到其中的aar文件
+    repositories {
+        flatDir(
+                dirs: 'libs'
+        )
+    }
 }
 
 dependencies {
+    //aar文件的依赖配置
+//    implementation(name:'android-jsc-r174650',ext:'aar')
+//    implementation(name:'drawee-0.8.1',ext:'aar')
+//    implementation(name:'fbcore-0.8.1',ext: 'aar')
+//    implementation(name:'fresco-0.8.1',ext: 'aar')
+//    implementation(name:'imagepipeline-0.8.1','aar')
+//    implementation(name:'imagepipeline-okhttp-0.8.1',ext: 'aar')
+//    implementation(name:'react-native-0.18.0',ext: 'aar')
+
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'com.android.support:appcompat-v7:28.0.0'
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'

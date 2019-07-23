@@ -2,11 +2,12 @@ package kehuafu.cn.tools.handler;
 
 import android.os.Handler;
 import android.os.Message;
+import android.support.annotation.NonNull;
 
 import java.lang.ref.WeakReference;
 
 /**
- * 功能描述：使用Handler时，设置activity或fragment的弱引用
+ * 功能描述：使用Handler时，设置activity或fragment的弱引用.
  */
 public class BaseHandler extends Handler {
 
@@ -22,7 +23,7 @@ public class BaseHandler extends Handler {
      * @param weakReference
      * @param handleMessage
      */
-    public BaseHandler(WeakReference<Object> weakReference, HandleMessage handleMessage) {
+    public BaseHandler(@NonNull WeakReference<Object> weakReference, @NonNull HandleMessage handleMessage) {
         this.weakReference = weakReference;
         this.handleMessage = handleMessage;
     }

@@ -13,10 +13,12 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 /**
- * 图片加载类
+ * 图片加载类，添加Builder模式
  */
-public class ImageLoader {
+public final class ImageLoader {
     private static final String TAG = "ImageLoader";
+    //ImageLoader实例
+    private static ImageLoader mInstance;
     //图片缓存
     ImageCache imageCache = new MemoryCache();
     //线程池，线程数量为CPU的数量
@@ -24,6 +26,18 @@ public class ImageLoader {
             getRuntime().availableProcessors());
     //UI Handler
     Handler mUiHandler = new Handler(Looper.getMainLooper());
+
+    //获取ImageLoader单例、DCL形式
+    public static ImageLoader getInstance() {
+        if (mInstance == null) {
+            synchronized (ImageLoader.class) {
+                if (mInstance == null) {
+                    mInstance = new ImageLoader();
+                }
+            }
+        }
+        return mInstance;
+    }
 
     //更新图片
     private void updateImageView(final ImageView imageView, final Bitmap bitmap) {
@@ -47,8 +61,8 @@ public class ImageLoader {
             imageView.setImageBitmap(bitmap);
             return;
         }
-      //图片没有缓存，提交到线程池中下载图片
-        submitLoaderRequest(url,imageView);
+        //图片没有缓存，提交到线程池中下载图片
+        submitLoaderRequest(url, imageView);
     }
 
     private void submitLoaderRequest(final String url, final ImageView imageView) {
@@ -57,14 +71,14 @@ public class ImageLoader {
             @Override
             public void run() {
                 Bitmap bitmap = downloadImage(url);
-                if (bitmap==null){
+                if (bitmap == null) {
                     return;
                 }
-                if (imageView.getTag().equals(url)){
-                    updateImageView(imageView,bitmap);
+                if (imageView.getTag().equals(url)) {
+                    updateImageView(imageView, bitmap);
                 }
-                Log.d(TAG, "run: "+url);
-                imageCache.put(url,bitmap);
+                Log.d(TAG, "run: " + url);
+                imageCache.put(url, bitmap);
             }
         });
     }
@@ -80,7 +94,14 @@ public class ImageLoader {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        Log.d(TAG, "downloadImage: "+bitmap);
+        Log.d(TAG, "downloadImage: " + bitmap);
         return bitmap;
+    }
+
+    /**
+     * 图片加载Listener，加载完成后回调给客户端代码
+     */
+    public interface ImageListener {
+        void onComplete(ImageView imageView, Bitmap bitmap, String url);
     }
 }

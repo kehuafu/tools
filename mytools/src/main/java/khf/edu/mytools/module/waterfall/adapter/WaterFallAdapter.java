@@ -56,7 +56,7 @@ public class WaterFallAdapter extends RecyclerView.Adapter<WaterFallAdapter.MyVi
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, final int i) {
         ImageLoader.with(mContext)
-                .url("http://www.huaguangstore.com.cn/user_images/person.jpg")
+                .url("http://www.huaguangstore.com.cn/user_images/person.webp")
                 .placeHolder(R.mipmap.user_unload)
                 .rectRoundCorner(30)
                 .into(holder.cardUserIv);
@@ -64,7 +64,7 @@ public class WaterFallAdapter extends RecyclerView.Adapter<WaterFallAdapter.MyVi
         layoutParams.height = mHeight.get(i);
         holder.itemIv.setLayoutParams(layoutParams);
         ImageLoader.with(mContext)
-                .url("http://www.huaguangstore.com.cn/user_images/person.jpg")
+                .url("http://www.huaguangstore.com.cn/user_images/person.webp")
                 .placeHolder(mColor.get(i))
                 .scale(ScaleMode.FIT_CENTER)
                 .into(holder.itemIv);

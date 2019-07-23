@@ -44,7 +44,6 @@ public class FloatButton extends FloatingActionButton {
         mScroller.startScroll(scrollX,0,delta,destY,2000);//在两秒内移动delta像素
         invalidate();
     }
-
     @Override
     public boolean onTouchEvent(MotionEvent ev) {
         //获取手指触摸点的横坐标和纵坐标

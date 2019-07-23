@@ -17,6 +17,7 @@ public class SPUtils {
     private static String SESSION = "session";
     private String fileName = "data";
 
+
     private SPUtils(Context context) {
         this.context = context;
     }

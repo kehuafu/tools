@@ -13,9 +13,10 @@ import android.view.inputmethod.InputMethodManager;
 
 public abstract class BaseActivity extends AppCompatActivity {
     /**
-     * 沉浸式开关
+     * 沉浸式开关.
      */
     protected boolean openSteep = false;
+    protected int barColor  = Color.WHITE;//默认状态栏为白色
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -23,10 +24,18 @@ public abstract class BaseActivity extends AppCompatActivity {
         setContentView(setLayout());
         initView();
         initListener();
-        setLightMode();
+        setLightMode(barColor);
         if (openSteep) {
             steepStatusBar();
         }
+    }
+
+    /**
+     * 设置状态栏的背景颜色
+     * @param barColor
+     */
+    public void setBarColor(int barColor) {
+        this.barColor = barColor;
     }
 
     /**
@@ -69,16 +78,20 @@ public abstract class BaseActivity extends AppCompatActivity {
     /**
      * 状态栏设置字体、背景颜色
      */
-    private void setLightMode() {
+    private void setLightMode(int barColor) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             this.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS
                     | WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
             this.getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
                     | View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR
                     | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
-            this.getWindow().setStatusBarColor(Color.WHITE);
-            this.getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_VISIBLE|
+            this.getWindow().setStatusBarColor(barColor);
+            this.getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_VISIBLE |
                     View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+        }
+        if (barColor!=Color.WHITE){
+            this.getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_VISIBLE |
+                    View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR);
         }
     }
 

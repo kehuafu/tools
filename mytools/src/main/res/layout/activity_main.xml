@@ -6,18 +6,25 @@
     android:layout_height="match_parent"
     tools:context=".module.home.activity.MainActivity">
 
+    <!--引入外部共享布局-->
+    <include
+        layout="@layout/layout_common_title"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentTop="true" />
+
     <kehuafu.cn.tools.custom.RoundImageView
-        android:layout_marginTop="20dp"
         android:id="@+id/mine_iv"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_gravity="center_horizontal"
-        android:scaleType="fitXY"
-        android:layout_centerInParent="true"
-        android:layout_marginBottom="30dp"
         android:layout_above="@+id/click_tv"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="30dp"
+        android:scaleType="fitXY"
         android:src="@drawable/wx_mine"
-        app:type="round"/>
+        app:type="round" />
 
     <TextView
         android:id="@+id/click_tv"
@@ -33,24 +40,33 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/click_tv"
-        android:text="button"
         android:layout_centerInParent="true"
         android:layout_marginTop="10dp"
+        android:text="button"
         tools:ignore="HardcodedText" />
+
     <kehuafu.cn.tools.custom.MyTextView
         android:id="@+id/test_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/my_btn"
         android:layout_centerInParent="true"
         android:layout_marginTop="10dp"
-        android:text="记录世界记录你"
-        android:layout_below="@+id/my_btn"/>
-    <ImageView
-        android:id="@+id/card_iv"
+        android:text="记录世界记录你" />
+
+    <!--<ImageView-->
+        <!--android:id="@+id/card_iv"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_below="@+id/test_tv"-->
+        <!--android:layout_centerInParent="true" />-->
+    <ViewStub
+        android:id="@+id/loading_stub"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:layout_below="@+id/test_tv"/>
+        android:layout_below="@+id/test_tv"
+        android:layout="@layout/layout_loading"
+        android:layout_centerInParent="true"/>
 
     <khf.edu.mytools.module.home.view.FloatButton
         android:id="@+id/fab_view"
@@ -64,4 +80,37 @@
         android:src="@drawable/recording"
         app:pressedTranslationZ="6dp" />
 
+    <!--底部动作条-->
+    <!--<android.support.design.widget.CoordinatorLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:fitsSystemWindows="true">-->
+
+    <!--<LinearLayout-->
+    <!--android:id="@+id/design_bottom_sheet"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:background="@android:color/holo_green_light"-->
+    <!--android:orientation="vertical"-->
+    <!--android:paddingTop="8dp"-->
+    <!--app:layout_behavior="android.support.design.widget.BottomSheetBehavior">-->
+
+    <!--<TextView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:text="123" />-->
+
+    <!--<TextView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:text="456" />-->
+
+    <!--<TextView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:text="789" />-->
+
+    <!--</LinearLayout>-->
+
+    <!--</android.support.design.widget.CoordinatorLayout>-->
 </kehuafu.cn.tools.custom.MyRelativeLayout>

@@ -31,13 +31,13 @@ public class MyRelativeLayout extends RelativeLayout {
                 Log.d(TAG, "dispatchTouchEvent: ACTION_DOWN");
                 break;
             case MotionEvent.ACTION_MOVE:
-                Log.d(TAG, "dispatchTouchEvent: ACTION_MOVE");
+                //Log.d(TAG, "dispatchTouchEvent: ACTION_MOVE");
                 break;
             case MotionEvent.ACTION_UP:
-                Log.d(TAG, "dispatchTouchEvent: ACTION_UP");
+                //Log.d(TAG, "dispatchTouchEvent: ACTION_UP");
                     break;
             case MotionEvent.ACTION_CANCEL:
-                Log.d(TAG, "dispatchTouchEvent: ACTION_CANCEL");
+                //Log.d(TAG, "dispatchTouchEvent: ACTION_CANCEL");
                 break;
         }
         return super.dispatchTouchEvent(ev);
@@ -55,16 +55,16 @@ public class MyRelativeLayout extends RelativeLayout {
                 Log.d(TAG, "onInterceptTouchEvent: ACTION_DOWN");
                 break;
             case MotionEvent.ACTION_MOVE:
-                Log.d(TAG, "onInterceptTouchEvent: ACTION_MOVE");
+                //Log.d(TAG, "onInterceptTouchEvent: ACTION_MOVE");
                 break;
             case MotionEvent.ACTION_UP:
-                Log.d(TAG, "onInterceptTouchEvent: ACTION_UP");
+                //Log.d(TAG, "onInterceptTouchEvent: ACTION_UP");
                 break;
             case MotionEvent.ACTION_CANCEL:
-                Log.d(TAG, "onInterceptTouchEvent: ACTION_CANCEL");
+                //Log.d(TAG, "onInterceptTouchEvent: ACTION_CANCEL");
                 break;
         }
-        return true;
+        return super.onInterceptTouchEvent(ev);
     }
 
     /**
@@ -79,13 +79,13 @@ public class MyRelativeLayout extends RelativeLayout {
                 Log.d(TAG, "onTouchEvent: ACTION_DOWN");
                 break;
             case MotionEvent.ACTION_MOVE:
-                Log.d(TAG, "onTouchEvent: ACTION_MOVE");
+                //Log.d(TAG, "onTouchEvent: ACTION_MOVE");
                 break;
             case MotionEvent.ACTION_UP:
-                Log.d(TAG, "onTouchEvent: ACTION_UP");
+                //Log.d(TAG, "onTouchEvent: ACTION_UP");
                 break;
             case MotionEvent.ACTION_CANCEL:
-                Log.d(TAG, "onTouchEvent: ACTION_CANCEL");
+                //Log.d(TAG, "onTouchEvent: ACTION_CANCEL");
                 break;
         }
         return super.onTouchEvent(ev);

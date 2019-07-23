@@ -8,6 +8,7 @@ import android.net.NetworkInfo;
  * 对联网状态的简单封装
  */
 public class NetworkStatus {
+
     private Context context;
     private ConnectivityManager cm;
     private NetworkInfo info;

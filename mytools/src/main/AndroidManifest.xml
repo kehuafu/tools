@@ -3,6 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="khf.edu.mytools">
 
+    <uses-permission
+        android:name="android.permission.ACCESS_COARSE_LOCATION"
+        android:maxSdkVersion="22" />
+    <uses-permission
+        android:name="android.permission.ACCESS_FINE_LOCATION"
+        android:maxSdkVersion="22" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -10,17 +16,24 @@
     <uses-permission
         android:name="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE"
         tools:ignore="ProtectedPermissions" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
     <application
         android:name=".application.MyApplication"
         android:allowBackup="true"
+        android:fullBackupContent="true"
         android:icon="@mipmap/tools"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/tools"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".module.annotation.activity.AnnotationActivity" android:exported="true"/>
+        android:usesCleartextTraffic="true"
+        tools:ignore="GoogleAppIndexingWarning"
+        tools:targetApi="n">
+        <activity android:name=".module.handler.activity.HandlerActivity" android:exported="true"/>
+        <activity
+            android:name=".module.annotation.activity.AnnotationActivity"
+            android:exported="true" />
         <activity android:name=".module.home.activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
