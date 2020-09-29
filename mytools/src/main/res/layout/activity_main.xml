@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".module.home.activity.MainActivity">
+    tools:context=".biz.main.MainActivity">
 
     <!--引入外部共享布局-->
     <include
@@ -68,7 +68,7 @@
         android:layout="@layout/layout_loading"
         android:layout_centerInParent="true"/>
 
-    <khf.edu.mytools.module.home.view.FloatButton
+    <khf.edu.mytools.biz.main.widget.FloatButton
         android:id="@+id/fab_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

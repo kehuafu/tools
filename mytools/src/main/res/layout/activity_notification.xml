@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".module.notification.activity.NotificationActivity">
+    tools:context=".biz.notification.NotificationActivity">
     <Button
         android:id="@+id/common_btn"
         android:layout_width="match_parent"

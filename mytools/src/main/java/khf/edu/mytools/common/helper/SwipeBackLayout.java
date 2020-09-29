@@ -370,8 +370,7 @@ public class SwipeBackLayout extends ViewGroup {
 
     public void finish() {
         //((Activity) getContext()).finish();
-        fragmentDialog.getDialog().dismiss();
-
+        //fragmentDialog.getDialog().dismiss();
     }
 
     public void setSwipeBackFactor(float swipeBackFactor) {

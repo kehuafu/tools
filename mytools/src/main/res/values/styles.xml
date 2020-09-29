@@ -8,12 +8,115 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+        <item name="android:statusBarColor">@color/color_transparent</item>
     </style>
+
     <!--自定义dialog动画样式-->
     <style name="dialog_animation" parent="android:Animation">
         <!--进入时的动画-->
-        <item name="@android:windowEnterAnimation">@anim/dialog_enter</item>
-        <!--退出时的动画-->
-        <item name="@android:windowExitAnimation">@anim/dialog_exit</item>
+<!--        <item name="@android:windowEnterAnimation">@anim/dialog_enter</item>-->
+<!--        &lt;!&ndash;退出时的动画&ndash;&gt;-->
+<!--        <item name="@android:windowExitAnimation">@anim/dialog_exit</item>-->
+    </style>
+
+    <style name="btn_radius_25_text_t1_bg_t1" parent="text_t1.15">
+        <item name="android:minHeight">@dimen/space_40</item>
+        <item name="android:background">@drawable/btn_radius_25_t1_border_1</item>
+        <item name="android:outlineProvider">none</item>
+        <item name="android:translationZ">0dp</item>
+        <item name="android:textSize">@dimen/font_17</item>
+        <item name="android:elevation">0dp</item>
+    </style>
+
+    <style name="btn_b2" parent="text_t3.15">
+        <item name="android:minHeight">@dimen/space_40</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:height">@dimen/space_40</item>
+        <item name="android:background">@drawable/btn_radius_25_b2</item>
+        <item name="android:outlineProvider">none</item>
+        <item name="android:translationZ">0dp</item>
+        <item name="android:elevation">0dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">@dimen/font_17</item>
+        <item name="android:textColor">@color/color_t3_dark</item>
+    </style>
+
+    <style name="btn_b2.t1">
+        <item name="android:textColor">@color/color_t1_dark</item>
+    </style>
+
+    <style name="btn_lock" parent="text_t1.15">
+        <item name="android:minHeight">@dimen/space_40</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:background">@drawable/btn_normal</item>
+        <item name="android:outlineProvider">none</item>
+        <item name="android:translationZ">0dp</item>
+        <item name="android:elevation">0dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">@dimen/font_17</item>
+        <item name="android:textColor">@color/color_lock</item>
+    </style>
+
+    <style name="btn_radius_15_text_t3_border_t3" parent="text_t3.15">
+        <item name="android:background">@drawable/btn_radius_15_border_t3_1</item>
+        <item name="android:textColor">@color/color_t3_dark</item>
+        <item name="android:textSize">@dimen/font_17</item>
+        <item name="android:outlineProvider">none</item>
+        <item name="android:gravity">center</item>
+        <item name="android:translationZ">0dp</item>
+        <item name="android:elevation">0dp</item>
+    </style>
+
+    <style name="btn_radius_25_text_b1_bg_b3_b4">
+        <item name="android:background">@drawable/btn_radius_25_b3_b4</item>
+        <item name="android:textColor">@color/color_b1_dark</item>
+        <item name="android:textSize">@dimen/font_17</item>
+        <item name="android:outlineProvider">none</item>
+        <item name="android:gravity">center</item>
+        <item name="android:translationZ">0dp</item>
+        <item name="android:elevation">0dp</item>
+        <item name="android:layout_height">@dimen/space_40</item>
+    </style>
+
+    <style name="btn_radius_14_text_b1_bg_b3_b4">
+        <item name="android:background">@drawable/btn_radius_25_b3_b4</item>
+        <item name="android:textColor">@color/color_b1_dark</item>
+        <item name="android:textSize">@dimen/font_12</item>
+        <item name="android:outlineProvider">none</item>
+        <item name="android:translationZ">0dp</item>
+        <item name="android:elevation">0dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_height">@dimen/space_40</item>
+    </style>
+
+    <style name="btn_radius_25_text_b1_bg_b3_b4_height_40">
+        <item name="android:background">@drawable/btn_radius_25_b3_b4</item>
+        <item name="android:textColor">@color/color_b1_dark</item>
+        <item name="android:textSize">@dimen/font_17</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_height">@dimen/space_40</item>
+        <item name="android:outlineProvider">none</item>
+        <item name="android:translationZ">0dp</item>
+        <item name="android:elevation">0dp</item>
+    </style>
+
+    <style name="btn_radius_12_border_l2">
+        <item name="android:background">@drawable/btn_radius_12_border_l2_1</item>
+        <item name="android:textColor">@color/color_l2_dark</item>
+        <item name="android:textSize">@dimen/font_17</item>
+        <item name="android:gravity">center</item>
+        <item name="android:outlineProvider">none</item>
+        <item name="android:translationZ">0dp</item>
+        <item name="android:elevation">0dp</item>
+    </style>
+
+    <style name="btn_radius_20_b8">
+        <item name="android:gravity">center</item>
+        <item name="android:background">@drawable/btn_radius_20_b8</item>
+        <item name="android:textColor">@color/color_t3_dark</item>
+        <item name="android:textSize">@dimen/font_17</item>
+        <item name="android:outlineProvider">none</item>
+        <item name="android:translationZ">0dp</item>
+        <item name="android:elevation">0dp</item>
     </style>
 </resources>

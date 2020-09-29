@@ -18,4 +18,61 @@
     <color name="ran_eight">#5c0a4a</color>
     <color name="ran_nine">#ad2628</color>
     <color name="ran_ten">#35855f</color>
+
+    <color name="color_t1">#2E3033</color>
+    <color name="color_t2">#9DA0A6</color>
+    <color name="color_t6">#999999</color>
+    <color name="color_t7">#333333</color>
+    <color name="color_t9">#aaaaaa</color>
+    <color name="color_b2">#FFFFFF</color>
+    <color name="color_b2_30">#4dFFFFFF</color>
+    <color name="color_b2_80">#ccFFFFFF</color>
+    <color name="color_b3">#877be7</color>
+    <color name="color_b5">#A47FE6</color>
+    <color name="color_l1">#EBEEF0</color>
+    <color name="color_l3">#ebebeb</color>
+    <color name="color_l4">#F9FAFB</color>
+    <color name="color_f3">#F09090</color>
+    <color name="color_f7">#9092f0</color>
+    <color name="color_f8">#f0ca90</color>
+    <color name="color_f9">#f0af90</color>
+
+    <color name="color_transparent">#00000000</color>
+    <color name="color_transparent_70">#b3000000</color>
+    <color name="color_transparent_50">#7f000000</color>
+    <color name="color_transparent_30">#30000000</color>
+    <color name="color_transparent_10">#10000000</color>
+
+    <color name="color_t1_dark">#f0f0f0</color>
+    <color name="color_t1_dark_9">#17f0f0f0</color>
+    <color name="color_t2_dark">#cccccc</color>
+    <color name="color_t3_dark">#999999</color>
+    <color name="color_t4_dark">#555555</color>
+    <color name="color_t5_dark">#666666</color>
+    <color name="color_t6_dark">#f7c571</color>
+    <color name="color_t7_dark">#ff6759</color>
+    <color name="color_b1_dark">#141b23</color>
+    <color name="color_b1_dark_60">#99141b23</color>
+    <color name="color_b1_dark_70">#b3141b23</color>
+    <color name="color_b2_dark">#23262f</color>
+    <color name="color_b2_dark_9">#1723262f</color>
+    <color name="color_b2_dark_70">#b323262f</color>
+    <color name="color_b3_dark">#f8e1ab</color>
+    <color name="color_b3_dark_70">#b3f8e1ab</color>
+    <color name="color_b4_dark">#f5bf6a</color>
+    <color name="color_b4_dark_70">#b3f5bf6a</color>
+    <color name="color_b5_dark">#fb6459</color>
+    <color name="color_b7_dark">#f4f4f4</color>
+    <color name="color_b8_dark">#e9e9e9</color>
+    <color name="color_b9_dark">#6CB37A</color>
+    <color name="color_b10_dark">#419EE2</color>
+    <color name="color_b11_dark">#74B8F2</color>
+    <color name="color_b12_dark">#f99d3e</color>
+
+
+    <color name="color_l1_dark">#282828</color>
+    <color name="color_l2_dark">#f2cb8e</color>
+    <color name="color_l3_dark">#333333</color>
+    <color name="color_l4_dark">#ebebeb</color>
+    <color name="color_l5_dark">#ffb66a</color>
 </resources>

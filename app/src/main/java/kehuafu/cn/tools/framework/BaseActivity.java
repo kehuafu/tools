@@ -91,8 +91,7 @@ public abstract class BaseActivity extends AppCompatActivity {
                     View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
         }
         if (barColor!=Color.WHITE){
-            this.getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_VISIBLE |
-                    View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR);
+            this.getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_VISIBLE);
         }
     }
 

@@ -16,38 +16,50 @@
     <uses-permission
         android:name="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE"
         tools:ignore="ProtectedPermissions" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
-        android:name=".application.MyApplication"
+        android:name=".app.App"
         android:allowBackup="true"
         android:fullBackupContent="true"
         android:icon="@mipmap/tools"
         android:label="@string/app_name"
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/tools"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning"
-        tools:targetApi="n">
-        <activity android:name=".module.handler.activity.HandlerActivity" android:exported="true"/>
-        <activity
-            android:name=".module.annotation.activity.AnnotationActivity"
-            android:exported="true" />
-        <activity android:name=".module.home.activity.MainActivity">
+        tools:targetApi="q">
+        <activity android:name=".biz.main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".module.cardslip.activity.SwipeFinishActivity" />
-        <activity android:name=".module.waterfall.activity.WaterFallActivity" />
-        <activity android:name=".module.notification.activity.NotificationActivity" />
-        <activity android:name=".module.tablayout.activity.TabLayoutActivity" />
         <activity
-            android:name=".module.animation.activity.FrameActivity"
-            android:exported="true" />
+            android:name=".biz.handler.HandlerActivity"
+            android:exported="true">
+
+        </activity>
+        <activity android:name=".biz.cardslip.SwipeFinishActivity">
+
+        </activity>
+        <activity android:name=".biz.waterfall.WaterFallActivity">
+
+        </activity>
+        <activity android:name=".biz.notification.NotificationActivity">
+
+        </activity>
+        <activity android:name=".biz.tablayout.TabLayoutActivity">
+
+        </activity>
+        <activity
+            android:name=".biz.animation.FrameActivity"
+            android:exported="true">
+        </activity>
     </application>
 
 </manifest>
