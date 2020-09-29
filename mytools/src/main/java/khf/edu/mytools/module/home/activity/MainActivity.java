@@ -12,7 +12,6 @@ import android.content.pm.PackageManager;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Environment;
-import android.support.v4.app.ActivityCompat;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -21,6 +20,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import androidx.core.app.ActivityCompat;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -57,7 +58,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     private static final String HEADER_NAME = "Authorization";
     private static final String HEADER_CONTENT = "Bearer";
     private LinearLayout linearLayout;
-    private FloatButton fab;
+    private View fab;
     private Button button;
     private MyTextView myTextView;
     private ImageView cardIv;

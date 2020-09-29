@@ -2,11 +2,12 @@ package khf.edu.mytools.module.notification.activity;
 
 import android.annotation.SuppressLint;
 import android.app.NotificationManager;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import khf.edu.mytools.R;
 import khf.edu.mytools.common.util.NotificationUtil;

@@ -1,8 +1,8 @@
 package kehuafu.cn.tools.util;
 
 import android.os.Build;
-import android.support.annotation.RequiresApi;
-import android.util.Log;
+
+import androidx.annotation.RequiresApi;
 
 import java.time.LocalDate;
 

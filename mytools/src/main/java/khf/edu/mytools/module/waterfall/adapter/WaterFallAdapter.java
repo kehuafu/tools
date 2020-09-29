@@ -1,13 +1,14 @@
 package khf.edu.mytools.module.waterfall.adapter;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.CardView;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+
+import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
@@ -56,7 +57,7 @@ public class WaterFallAdapter extends RecyclerView.Adapter<WaterFallAdapter.MyVi
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, final int i) {
         ImageLoader.with(mContext)
-                .url("http://www.huaguangstore.com.cn/user_images/person.webp")
+                .url("https://tse1-mm.cn.bing.net/th/id/OET.d4e9c1e02e214fc68b20f610121dc3e0?w=272&h=135&c=7&rs=1&o=5&pid=1.9")
                 .placeHolder(R.mipmap.user_unload)
                 .rectRoundCorner(30)
                 .into(holder.cardUserIv);
@@ -64,7 +65,7 @@ public class WaterFallAdapter extends RecyclerView.Adapter<WaterFallAdapter.MyVi
         layoutParams.height = mHeight.get(i);
         holder.itemIv.setLayoutParams(layoutParams);
         ImageLoader.with(mContext)
-                .url("http://www.huaguangstore.com.cn/user_images/person.webp")
+                .url("https://tse1-mm.cn.bing.net/th/id/OET.d4e9c1e02e214fc68b20f610121dc3e0?w=272&h=135&c=7&rs=1&o=5&pid=1.9")
                 .placeHolder(mColor.get(i))
                 .scale(ScaleMode.FIT_CENTER)
                 .into(holder.itemIv);

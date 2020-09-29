@@ -1,11 +1,12 @@
 package khf.edu.mytools.module.home.view;
 
 import android.content.Context;
-import android.support.design.widget.FloatingActionButton;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Scroller;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class FloatButton extends FloatingActionButton {
     private int lastX;

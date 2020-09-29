@@ -3,11 +3,11 @@ package khf.edu.mytools.application;
 import android.app.Application;
 import android.content.Context;
 import android.os.StrictMode;
-import android.support.v4.BuildConfig;
 
 import imageloader.libin.com.images.loader.ImageLoader;
 import kehuafu.cn.tools.util.BaseToast;
 import kehuafu.cn.tools.util.SPUtils;
+import khf.edu.mytools.BuildConfig;
 
 public class MyApplication extends Application {
     private Context context;

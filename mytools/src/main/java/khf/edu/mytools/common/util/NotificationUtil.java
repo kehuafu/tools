@@ -7,8 +7,9 @@ import android.content.Context;
 import android.content.ContextWrapper;
 import android.graphics.BitmapFactory;
 import android.os.Build;
-import android.support.annotation.RequiresApi;
-import android.support.v4.app.NotificationCompat;
+
+import androidx.annotation.RequiresApi;
+import androidx.core.app.NotificationCompat;
 
 import khf.edu.mytools.R;
 
@@ -52,13 +53,13 @@ public class NotificationUtil extends ContextWrapper {
     public NotificationCompat.Builder getNotification_25(String title, String content) {
 
         // 以下是展示大图的通知
-        android.support.v4.app.NotificationCompat.BigPictureStyle style = new android.support.v4.app.NotificationCompat.BigPictureStyle();
+        NotificationCompat.BigPictureStyle style = new NotificationCompat.BigPictureStyle();
         style.setBigContentTitle("BigContentTitle");
         style.setSummaryText("SummaryText");
         style.bigPicture(BitmapFactory.decodeResource(getResources(), R.drawable.koala));
 
         // 以下是展示多文本通知
-        android.support.v4.app.NotificationCompat.BigTextStyle style1 = new android.support.v4.app.NotificationCompat.BigTextStyle();
+        NotificationCompat.BigTextStyle style1 = new NotificationCompat.BigTextStyle();
         style1.setBigContentTitle(title);
         style1.bigText(content);
 

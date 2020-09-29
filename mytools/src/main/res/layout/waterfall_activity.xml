@@ -17,7 +17,7 @@
             android:padding="12dp"
             android:src="@drawable/menu_selector"
             android:scaleType="centerInside"/>
-        <android.support.v7.widget.RecyclerView
+        <androidx.recyclerview.widget.RecyclerView
             android:layout_toRightOf="@+id/menu_iv"
             android:layout_toLeftOf="@+id/camera_iv"
             android:layout_width="match_parent"
@@ -33,13 +33,13 @@
 
     </RelativeLayout>
 
-    <android.support.v7.widget.RecyclerView
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/my_rv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:divider="#1195f4"
         android:dividerHeight="1dp">
 
-    </android.support.v7.widget.RecyclerView>
+    </androidx.recyclerview.widget.RecyclerView>
 
 </LinearLayout>

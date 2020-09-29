@@ -1,8 +1,9 @@
 package khf.edu.mytools.module.leave.adapter;
 
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
+
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
 
 import java.util.List;
 
@@ -16,9 +17,6 @@ public class FragmentAdapter extends FragmentPagerAdapter {
 
     private List<MyFragment> list;
 
-    public FragmentAdapter(FragmentManager fm, List<Fragment> fragments, List<String> titles){
-        super(fm);
-    }
     public FragmentAdapter(FragmentManager fm,List<MyFragment> fragmentList) {
         super(fm);
         this.list = fragmentList;

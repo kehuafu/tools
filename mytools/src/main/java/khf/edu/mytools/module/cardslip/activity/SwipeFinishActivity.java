@@ -1,8 +1,9 @@
 package khf.edu.mytools.module.cardslip.activity;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.RadioGroup;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import khf.edu.mytools.R;
 import khf.edu.mytools.common.helper.BindView;
