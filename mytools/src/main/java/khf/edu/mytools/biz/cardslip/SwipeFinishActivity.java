@@ -1,28 +1,25 @@
 package khf.edu.mytools.biz.cardslip;
 
-import android.os.Bundle;
 import android.widget.RadioGroup;
-
-import androidx.appcompat.app.AppCompatActivity;
-
+import kehuafu.cn.tools.framework.BaseActivity;
 import khf.edu.mytools.R;
 import khf.edu.mytools.common.helper.BindView;
 import khf.edu.mytools.common.helper.SwipeBackLayout;
 
-public class SwipeFinishActivity extends AppCompatActivity {
+public class SwipeFinishActivity extends BaseActivity {
 
     @BindView(R.id.selectDirect)
     private RadioGroup mSelectDirect;
     private SwipeBackLayout mSwipeBackLayout;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_swipe_finish);
-        initView();
+    protected int setLayout() {
+        return R.layout.activity_swipe_finish;
     }
 
-    private void initView() {
+    @Override
+    protected void initView() {
+        setBarColor(getResources().getColor(R.color.color_b9_dark));
         mSelectDirect = findViewById(R.id.selectDirect);
         mSwipeBackLayout = new SwipeBackLayout(this);
         mSwipeBackLayout.attachToActivity(this);
@@ -46,5 +43,10 @@ public class SwipeFinishActivity extends AppCompatActivity {
                     break;
             }
         });
+    }
+
+    @Override
+    protected void initListener() {
+
     }
 }

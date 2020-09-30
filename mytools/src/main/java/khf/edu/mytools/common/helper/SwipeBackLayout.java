@@ -369,7 +369,7 @@ public class SwipeBackLayout extends ViewGroup {
 
 
     public void finish() {
-        //((Activity) getContext()).finish();
+        ((Activity) getContext()).finish();
         //fragmentDialog.getDialog().dismiss();
     }
 

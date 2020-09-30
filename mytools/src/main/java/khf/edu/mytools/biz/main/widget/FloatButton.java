@@ -8,6 +8,9 @@ import android.widget.Scroller;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+/**
+ * 悬浮可拖动按钮
+ */
 public class FloatButton extends FloatingActionButton {
     private int lastX;
     private int lastY;

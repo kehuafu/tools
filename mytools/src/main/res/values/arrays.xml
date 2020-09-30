@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="main_theme">
+        <item>瀑布流->仿快手首页</item>
+        <item>滑动关闭页面->仿微信</item>
+        <item>礼仪活动</item>
+        <item>模特拍照</item>
+        <item>其它技能</item>
+        <item>其它</item>
+        <item>其它</item>
+        <item>其它</item>
+    </string-array>
+</resources>
